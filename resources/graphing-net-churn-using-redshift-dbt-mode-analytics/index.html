@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:29:15 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head >
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Graphing net churn using Redshift, DBT and Mode Analytics | Vero</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v8.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Chart SaaS metrics: MRR upgrades, downgrades, new and churned MRR using Amazon&#039;s Redshift, DBT and Mode Analytics. It is easier than ever to set up a data warehouse with virtually no data limits, such as Amazon&#039;s AWS Redshift or Google&#039;s Big Query."/>
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Graphing net churn using Redshift, DBT and Mode Analytics | Vero" />
+<meta property="og:description" content="Chart SaaS metrics: MRR upgrades, downgrades, new and churned MRR using Amazon&#039;s Redshift, DBT and Mode Analytics. It is easier than ever to set up a data warehouse with virtually no data limits, such as Amazon&#039;s AWS Redshift or Google&#039;s Big Query." />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="Vero" />
+<meta property="article:section" content="Analytics" />
+<meta property="article:published_time" content="2018-03-05T07:25:47+11:00" />
+<meta property="article:modified_time" content="2018-04-30T21:36:06+11:00" />
+<meta property="og:updated_time" content="2018-04-30T21:36:06+11:00" />
+<meta property="og:image" content="https://i2.wp.com/www.getvero.com/wp-content/uploads/2018/03/Graphing_net_churn2.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:secure_url" content="https://i2.wp.com/www.getvero.com/wp-content/uploads/2018/03/Graphing_net_churn2.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Graphing net churn with Redshift, DBT and Mode" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Chart SaaS metrics: MRR upgrades, downgrades, new and churned MRR using Amazon&#039;s Redshift, DBT and Mode Analytics. It is easier than ever to set up a data warehouse with virtually no data limits, such as Amazon&#039;s AWS Redshift or Google&#039;s Big Query." />
+<meta name="twitter:title" content="Graphing net churn using Redshift, DBT and Mode Analytics | Vero" />
+<meta name="twitter:image" content="https://i2.wp.com/www.getvero.com/wp-content/uploads/2018/03/Graphing_net_churn2.png?fit=1200%2C630&amp;ssl=1" />
+<meta name="twitter:creator" content="@chexton" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='http://s0.wp.com/' />
+<link rel='dns-prefetch' href='http://secure.gravatar.com/' />
+<link rel='dns-prefetch' href='http://fast.fonts.net/' />
+<link rel='dns-prefetch' href='http://cdnjs.cloudflare.com/' />
+<link rel='dns-prefetch' href='http://cdn.getvero.com/' />
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://cdn.rawgit.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Comments Feed" href="../../comments/feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Graphing net churn using Redshift, DBT and Mode Analytics Comments Feed" href="feed/index.html" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.getvero.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='child-theme-css'  href='../../wp-content/themes/vero/style8036.css?ver=1527794841' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../../wp-content/plugins/naked-social-share/assets/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css-css'  href='../../wp-content/plugins/wordpress-popular-posts/public/css/wpp8aee.css?ver=4.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='../../wp-includes/css/dashicons.min5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='highlight-css-css'  href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/tomorrow-night-bright.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-css'  href='../../wp-content/themes/vero/assets/stylesheets/prismc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-okaidia-css'  href='../../wp-content/themes/vero/assets/stylesheets/prism-okaidiac141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='imgslider-style-css'  href='../../wp-content/themes/vero/assets/stylesheets/imgslider-2.0.1-minc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-stylesheet-css'  href='https://cdn.getvero.com/app.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='googlefont_merriweather-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A700%2C700italic&amp;ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='bxslider-style-css'  href='../../wp-content/themes/vero/assets/stylesheets/jquery.bxslider5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-style-css'  href='http://cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-styles-css'  href='../../wp-content/plugins/jetpack/modules/widgets/social-icons/social-iconsf4df.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../../wp-content/plugins/jetpack/css/jetpack8f99.css?ver=6.5' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpp_params = {"sampling_active":"0","sampling_rate":"100","ajax_url":"https:\/\/www.getvero.com\/wp-json\/wordpress-popular-posts\/v1\/popular-posts\/","action":"update_views_ajax","ID":"7612","token":"87109256d6","debug":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/wordpress-popular-posts/public/js/wpp-4.1.0.min8aee.js?ver=4.1.2'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://www.getvero.com/wp-content/themes/genesis/lib/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/fout.js'></script>
+<script type='text/javascript' src='http://fast.fonts.net/jsapi/bd23cf03-685d-4ec1-b306-4adae883ab02.js'></script>
+<link rel='https://api.w.org/' href='../../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://wp.me/p6YSXu-1YM' />
+<link rel="alternate" type="application/json+oembed" href="../../wp-json/oembed/1.0/embedabf9.json?url=https%3A%2F%2Fwww.getvero.com%2Fresources%2Fgraphing-net-churn-using-redshift-dbt-mode-analytics%2F" />
+<link rel="alternate" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embedb121?url=https%3A%2F%2Fwww.getvero.com%2Fresources%2Fgraphing-net-churn-using-redshift-dbt-mode-analytics%2F&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'/>
+<link rel='dns-prefetch' href='http://i0.wp.com/'/>
+<link rel='dns-prefetch' href='http://i1.wp.com/'/>
+<link rel='dns-prefetch' href='http://i2.wp.com/'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="icon" href="../../wp-content/themes/vero/assets/images/home/favicon/64.png" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<!-- Google Tag Manager -->
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-M8KWK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'http://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8KWK');</script>
+<!-- End Google Tag Manager --></head>
+<body class="post-template-default single single-post postid-7612 single-format-standard header-full-width full-width-content" itemscope itemtype="https://schema.org/WebPage"><div class="site-container"><nav class="nav-primary" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement"><div class="wrap">  <ul id="menu-marketing-navbar-left" class="menu">
+    <li id="logo" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="../../index.html"><img data-no-retina src="../../wp-content/themes/vero/assets/images/home/logo/logo-blue.svg" width="104" height="36"></a></li>
+    <li><a href="../../careers/index.html" class="hiring-pill">We're Hiring!</a></li>
+  </ul>
+  <ul id="menu-marketing-navbar-right" class="menu genesis-nav-menu menu-primary"><li id="menu-item-7514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7514"><a title="Features" href="../../features/index.html" itemprop="url"><span itemprop="name">Features</span></a></li>
+<li id="menu-item-2169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2169"><a href="../../features/email/index.html" itemprop="url"><span itemprop="name">More</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-7751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7751"><a href="../../workflows/index.html" itemprop="url"><span itemprop="name">Workflows</span></a></li>
+	<li id="menu-item-7601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7601"><a href="../../event-manager/index.html" itemprop="url"><span itemprop="name">Event Management</span></a></li>
+	<li id="menu-item-7502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7502"><a href="../../fusion/index.html" itemprop="url"><span itemprop="name">Fusion</span></a></li>
+	<li id="menu-item-7480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7480"><a href="../../multi-language-campaigns/index.html" itemprop="url"><span itemprop="name">Multi-language Campaigns</span></a></li>
+	<li id="menu-item-7600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7600"><a href="../../reporting/index.html" itemprop="url"><span itemprop="name">Reporting</span></a></li>
+</ul>
+</li>
+<li id="menu-item-2026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2026"><a href="http://help.getvero.com/" itemprop="url"><span itemprop="name">Help</span></a></li>
+<li id="menu-item-2120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2120"><a href="../index.html" itemprop="url"><span itemprop="name">Blog</span></a></li>
+<li id="menu-item-2025" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2025"><a href="../../pricing.html" itemprop="url"><span itemprop="name">Pricing</span></a></li>
+<li id="menu-item-429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-429"><a href="https://app.getvero.com/login" itemprop="url"><span itemprop="name">Log In</span></a></li>
+<li id="menu-item-2119" class="btn btn-success menu-item menu-item-type-custom menu-item-object-custom menu-item-2119"><a title="button" href="https://app.getvero.com/signup" itemprop="url"><span itemprop="name">Start a free trial</span></a></li>
+</ul>  <div class="nav-menu-toggle"><a href="#">Menu</a></div>
+  </div></nav>
+    <div id="blog-sub-menu" class="bottom-border-light">
+      <div class="categories">
+        <div class="category-button"><span class="fa fa-angle-down"></span></div>
+        <ul id="categories-menu">
+          <li class=""><a href="../index.html">All</a></li>
+          <li class=""><a href="../category/vero-updates/index.html">Vero Updates</a></li>
+          <li class=""><a href="../category/how-to/index.html">How To's</a></li>
+          <li class=""><a href="../category/case-studies/index.html">Case Studies</a></li>
+          <!-- <li class=""><a href="/resources/category/case-studies">Product Updates</a></li> -->
+        </ul>
+      </div>
+      <form class="search-form" itemprop="potentialAction" itemscope itemtype="https://schema.org/SearchAction" method="get" action="https://www.getvero.com/" role="search"><meta itemprop="target" content="https://www.getvero.com/?s={s}"/><input itemprop="query-input" type="text" name="s" placeholder="Search the blog..." /><input type="submit" value="Search"  /></form>    </div>
+
+  <div class="site-inner"><div class="content-sidebar-wrap">    <a href="../index.html" class="back-to-blog"><span class="fa fa-long-arrow-left"></span>Back to Blog</a>
+  <main class="content"><article class="post-7612 post type-post status-publish format-standard has-post-thumbnail category-analytics entry" itemscope itemtype="https://schema.org/CreativeWork"><header class="entry-header"><h1 class="entry-title" itemprop="headline">Graphing net churn using Redshift, DBT and Mode Analytics</h1>
+  <p class="entry-meta">
+          <a href="../category/conversion-optimization/analytics/index.html">Analytics</a>
+        Written On
+    <time class="entry-time" itemprop="datePublished" datetime="2015-05-06T06:33:11+00:00">
+      5 March, 2018    </time> 
+    by 
+    <span class="entry-author" itemprop="author" itemscope="itemscope" itemtype="http://schema.org/Person">
+      Chris Hexton    </span> 
+  </p>
+        <img src="../../wp-content/uploads/2018/03/Graphing_net_churn2.png">
+          <div class='shares-block'>
+        <!-- <div class='total-shares'>
+          <span>0</span>Shares
+        </div> -->
+        		<div class="naked-social-share nss-update-share-numbers" data-post-id="7612">
+			<ul>
+																				<li class="nss-twitter">
+								<a href="http://www.twitter.com/intent/tweet?url=https%3A%2F%2Fwww.getvero.com%2Fresources%2Fgraphing-net-churn-using-redshift-dbt-mode-analytics%2F&amp;via=getvero&amp;text=Graphing+net+churn+using+Redshift%2C+DBT+and+Mode+Analytics" target="_blank">
+									<i class="fa fa-twitter"></i>									<span class="nss-site-name">Twitter</span>
+																	</a>
+							</li>
+																			<li class="nss-facebook">
+								<a href="http://www.facebook.com/sharer/sharer.php?u=https://www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/&amp;t=Graphing+net+churn+using+Redshift%2C+DBT+and+Mode+Analytics" target="_blank">
+									<i class="fa fa-facebook"></i>									<span class="nss-site-name">Facebook</span>
+																	</a>
+							</li>
+																			<li class="nss-linkedin">
+								<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.getvero.com%2Fresources%2Fgraphing-net-churn-using-redshift-dbt-mode-analytics%2F&amp;title=Graphing+net+churn+using+Redshift%2C+DBT+and+Mode+Analytics&amp;source=Vero" target="_blank">
+									<i class="fa fa-linkedin"></i>									<span class="nss-site-name">LinkedIn</span>
+																	</a>
+							</li>
+														</ul>
+		</div>
+		      </div>
+    </header><div class="entry-content" itemprop="text"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>When it comes to basic data analytics, there are three key things that have changed over the last few years:</p>
+<ol><li>It is easier than ever to set up a data warehouse with virtually no data limits, such as Amazon&rsquo;s AWS Redshift or Google&rsquo;s Big Query.</li>
+<li>It is easier than ever to synchronize data from SaaS products into such warehouses, with tools like Stitch and Segment.</li>
+<li>There are several easy-to-use, effective tools that make it trivial to query and chart the plethora of data in your warehouse in a sophisticated way, such as Mode Analytics and Looker.</li>
+</ol><p>At Vero, we&rsquo;re big proponents of these advancements and how these tools work together. In most scenarios, the &ldquo;data pipeline&rdquo; outlined above is superior to tools like Mixpanel and Amplitude as it enables greater data accuracy and completeness.</p>
+<p>In this guide, I&rsquo;m going to introduce you to storing and analyzing data directly in Amazon&rsquo;s Redshift using <a href="https://www.getdbt.com/">DBT</a> and Mode Analytics. We&rsquo;re going to chart some the basic SaaS metrics of MRR upgrades, downgrades, new and churned MRR to get started.</p>
+<p>I&rsquo;ve included the actual SQL we use at Vero, and I&rsquo;ve broken down how it works so you can use it, get inspired by it or build upon it.</p>
+<p>The full repository of SQL can be found <a href="https://github.com/getvero/dbt-saas">here</a>.</p>
+<p>You can apply the same approach I use here to chart virtually <em>anything</em> with this setup, it&rsquo;s very powerful.</p>
+<h2>Charting upgrades, downgrades, new revenue and churn</h2>
+<p>Here&rsquo;s an example of the chart we&rsquo;ll be building (note that &ldquo;news&rdquo; means new MRR in this chart):</p>
+<figure class=" small-image" style="px"><img src="https://i2.wp.com/dha4w82d62smt.cloudfront.net/items/2C3x2J321G3B1X2M3H33/charting-mrr-movements-sql-dbt-redshift.png?ssl=1" data-recalc-dims="1"></figure><h2>What you&rsquo;ll need for graphing net churn</h2>
+<p>Here&rsquo;s the setup you&rsquo;ll need to get accurate and complete data and to chart it beautifully:</p>
+<ul><li>An AWS Redshift database to store all of your data.</li>
+<li>StitchData to synchronise data from Stripe (or your invoicing platform) to Redshift.</li>
+<li><a href="https://www.getdbt.com/">DBT</a> to turn the unorganised, raw data that is synchronised from Stripe into Redshift into clean database &ldquo;views&rdquo; you can query to create pretty charts.</li>
+<li><a href="https://www.sinterdata.com/">Sinter</a> to run <code>DBT</code> queries daily (or more often) so that your charts are up to date.</li>
+<li>Mode Analytics to query the clean database views generated by DBT and Sinter to create beautiful charts.</li>
+</ul><p>All up, these components cost around $480 USD per month. They&rsquo;re all scalable to virtually any limit, so you can rest assured they&rsquo;ll scale with you as you grow.</p>
+<h2>Synchronising your data to Redshift</h2>
+<h2>The SQL</h2>
+<p>To help you, we&rsquo;ve <a href="https://github.com/getvero/dbt-saas">pulled together a Github repository</a> with all of the SQL needed to create these charts. As you become more familiar with DBT, you&rsquo;ll observe that this repository is structured in line with DBT&rsquo;s best practices and is a module that you should be able to import into another DBT project.</p>
+<p>The SQL here ultimately outputs a table called <code>revenue_movements</code>. This table contains one row for each month and one column each of the metrics <code>new_revenue</code>, <code>churned_revenue</code>, <code>upgrade_revenue</code> and <code>downgrade_revenue</code>.</p>
+<p>The resulting table can easily be queried using a tool like Mode.</p>
+<p>As mentioned above, I recommend you download the <a href="getvero.html">full SQL</a> and follow along in a text editor like Sublime.</p>
+<p>Below I&rsquo;ll step through each of the SQL queries used to build up the <code>revenue_movements</code> view.</p>
+<h3>Getting a nice clean list of all invoices</h3>
+<p>All of the SQL we&rsquo;ll be writing here is formatted in line with the structure outlined by DBT. Every SQL query is a <code>SELECT</code> and results in a table or view. This table or view can then be used by other DBT queries. This &ldquo;stacking&rdquo; helps create clean and reusable SQL. You can read more about <a href="https://docs.getdbt.com/docs/viewpoint">DBT&rsquo;s viewpoint / manifest here</a>.</p>
+<p>Onto the SQL! The first step in the process of creating our chart is to generate a view called <code>stripe_invoices</code> that has a row for every single customer invoice.</p>
+<p>When using <code>DBT</code>, I like to follow a standard structure for my SQL code inside the <code>models</code> folder:</p>
+<ul><li>I have a folder named after the source of the data, e.g. <code>stripe</code>.</li>
+<li>Within that folder I always have a <code>base</code> folder. The SQL files inside the <code>base</code> folder are responsible for querying the underlying raw dataset and returning <strong>only</strong> the columns needed by our queries later on.
+<ul><li>I will also do exclusions in these SQL files if I have any. </li>
+<li>Files in this folder are always named using the format <code>PROVIDER_MODEL.sql</code>, for example <code>stripe_invoices.sql</code>.</li>
+</ul></li>
+<li>I also have a <code>transform</code> folder. The SQL in this folder is responsible for taking the <code>base</code> output, e.g. <code>stripe_invoices</code>, and converting values into a more usable format, where useful.
+<ul><li>These files are always named with the <code>_xf</code> suffix, as in <code>stripe_invoices_xf.sql</code>.</li>
+<li>Critically, the base SQL should never be queried other than by it&rsquo;s corresponding transform query. The point is that <strong>all queries</strong> from here on use the <strong>transformed</strong> models, and never directly call the base models. This gives everything a reliable structure with a <strong>lot</strong> of flexibility. </li>
+</ul></li>
+</ul><p>Here&rsquo;s the SQL from the <code>stripe_invoices</code> base table:</p>
+<pre><code>select
+  id                      as id,
+  amount_due              as amount_due,
+  customer                as customer,
+  date                    as date,
+  period_end              as period_end,
+  forgiven                as forgiven,
+  paid                    as paid,
+  subscription            as subscription,
+  total                   as total,
+  starting_balance        as starting_balance
+from
+  {{ var('invoices_table') }}
+where
+  -- Remove customer IDs of users who will mess up MRR and other figures (e.g test accounts)
+  customer not in ('cus_3Ma5IxIINayMgK')
+</code></pre>
+<p>As you can see, it&rsquo;s pretty basic. The next step is to add in a few transformations. </p>
+<p>In this particular example, I want to include customers&rsquo; <code>email</code> addresses, but this data is not available in the raw Stripe invoices table, so I need to join another table to get it. Similarly, I want to include an index of the invoice number for each customer (i.e. first invoice, last invoice, etc.) so I&rsquo;ll add a query for this.</p>
+<p>Here&rsquo;s the transform SQL:</p>
+<pre><code>with 
+
+stripe_invoices_with_line_items as (
+  select 
+    * 
+  from 
+    {{ ref('stripe_invoices_with_line_items_xf_aggregated') }}
+), 
+
+usage_based_recipients as (
+  select
+    *
+  from
+    {{ ref('usage_based_recipients') }}
+)
+
+select 
+  stripe_invoices.id                              as id,
+  stripe_invoices.customer                        as customer,
+  stripe_customers_xf.email                       as customer_email,
+  stripe_invoices.date                            as date,
+  stripe_invoices.period_end                      as period_end,
+  stripe_invoices.forgiven                        as forgiven,
+  stripe_invoices.subscription                    as subscription,
+  stripe_invoices.paid                            as paid,
+  stripe_invoices_with_line_items.total           as total,
+  row_number() over(
+    partition by stripe_invoices.customer 
+    order by stripe_invoices.date desc
+  )                                               as last_payment,
+  row_number() over(
+    partition by stripe_invoices.customer 
+    order by stripe_invoices.date asc
+  )                                               as first_payment
+from 
+  {{ ref('stripe_invoices') }} stripe_invoices
+left outer join
+  stripe_invoices_with_line_items
+on
+  stripe_invoices.id = stripe_invoices_with_line_items.id
+left outer join
+  {{ ref('stripe_customers_xf') }} as stripe_customers_xf
+on
+  stripe_customers_xf.id = stripe_invoices.customer
+</code></pre>
+<p>As you an see, I&rsquo;m leveraging another transformed dataset, the <code>customers_xf</code> table. The <code>invoices_xf</code> resulting from the above query has all of the data I might want later.</p>
+<h3>Querying for new revenue per month</h3>
+<p>Now that we&rsquo;ve done to the hard work of creating a clean table of all of our customer invoices, it is relatively easy to query for revenue movements.</p>
+<p>Let&rsquo;s start with &ldquo;new revenue per month&rdquo;, as per the file <code>mrr_new.sql</code>:</p>
+<pre><code>select
+  date_trunc('month', date) as month,
+  sum(total)
+from
+  {{ref('invoices_by_customer')}}
+where
+  -- Find customers who had their first invoice this month
+  asc_row = 1 
+group by
+  date_trunc('month', date)
+</code></pre>
+<p>This SQL finds all of the initial invoices for each customer and groups and sums them by month (e.g. January, February, etc.). You&rsquo;ll note that the SQL leverages a table called <code>invoices_by_customer.sql</code>:</p>
+<pre><code>with 
+
+invoices_by_customer as (
+  select
+    customer_id,
+    date_trunc('month',date) as month,
+    sum(total) as total
+  from
+    {{ ref('invoices') }}
+  group by
+    customer_id,
+    date_trunc('month',date)
+)
+
+select 
+  *,
+  row_number() over (partition by customer_id order by month asc)   as asc_row 
+  row_number() over (partition by customer_id order by month desc)  as desc_row 
+from 
+  invoices_by_customer
+</code></pre>
+<p>This SQL groups the invoices by customer and month. This interim step is key as it is possible in Stripe that customers have two invoices in a single month. This aggregation ensures that for each month there is just one total &ldquo;invoiced&rdquo; count per customer. The <code>asc_row</code> thus accurately represents an index for each customer&rsquo;s invoices starting in the first month they paid and counting upwards. </p>
+<h3>Querying for upgrades per month</h3>
+<p>Querying for upgrades requires comparing two months and determining the difference between those two months. The SQL is located in <code>mrr_upgrades.sql</code>:</p>
+<pre><code>with
+
+find_upgrades as (
+  select 
+    invoices.month                                                as month,
+    invoices.asc_row                                              as asc_row,
+    invoices.total                                                as current_month_total,
+    coalesce(invoices_offset_one_month.total,0)                   as last_month_total,
+    invoices.total - coalesce(invoices_offset_one_month.total,0)  as change
+  from 
+    {{ref('invoices_by_customer')}} invoices
+  left outer join 
+    {{ref('invoices_by_customer')}} invoices_offset_one_month
+  on 
+    add_months(invoices.month, -1) = invoices_offset_one_month.month
+  and 
+    invoices.customer_id = invoices_offset_one_month.customer_id
+)
+
+select
+  month         as month,
+  sum(change)   as revenue
+from
+  upgrades
+where
+  -- Only include customers whose current month total is more than last month (upgrades!)
+  abs(upgrades.current_month_total) &gt; 
+  upgrades.last_month_total
+and 
+  -- Exclude customers who didn't move plans this month
+  upgrades.change &lt;&gt; 0 and upgrades.change is not null
+and
+  -- Exclude customer's first invoices, as these are actually "new" customers, not upgrades
+  upgrades.asc_row &lt;&gt; 1
+group by
+  upgrades.month
+</code></pre>
+<p>This query leverages the same <code>invoices_by_customer</code> table twice &ndash; once to query the total for &ldquo;this month&rdquo; and once to query the total for &ldquo;last month&rdquo;. It then displays the <strong>difference</strong> each of these totals.</p>
+<p>We also need to ensure we exclude:</p>
+<ul><li>Customers that have their <em>first invoice</em> <strong>this</strong> month, as those are already counted in the earlier <code>mrr_new</code> query. They represent customers who are new and, as they didn&rsquo;t have an invoice prior to their starting, there will always be a change recorded in their first month.</li>
+<li>Customers who have invoices with a total of <code>0</code> <em>this</em> month, as these are customers who have churned &ndash; we&rsquo;ll query them separately.</li>
+<li>Customers who have a <em>negative</em> change, as these are customers who have downgraded since last month.</li>
+</ul><p>We&rsquo;re left with a clean table containing the upgrades per month across our invoice history.</p>
+<h2>Bringing it all together</h2>
+<p>The files <code>mrr_churns</code> and <code>mrr_downgrades</code> provide the SQL to chart these numbers. They are similar to the queries above.</p>
+<p>With the key metrics of new revenue, churned revenue, upgrades and downgrades accounted for, we can now bring these figures together. DBT separates <code>models</code> (like those above) and <code>analysis</code> SQL files into two. I always put the final SQL that I will copy and paste into Mode into the <code>analysis</code> folder. The SQL within that folder represents each SQL query used to build our dashboards.</p>
+<p>The file <code>revenue/mrr_movements.sql</code> joins the <code>mrr_new</code>, <code>mrr_upgrades</code>, <code>mrr_downgrades</code> and <code>mrr_churns</code> tables discussed above:</p>
+<pre><code>select
+  new_revenue.month,
+  new_revenue.revenue         as new_revenue,
+  churned_revenue.revenue     as churned_revenue,
+  upgrade_revenue.revenue     as upgrade_revenue,
+  downgrade_revenue.revenue   as downgrade_revenue
+from
+  {{ref('mrr_new')}} new_revenue
+left outer join
+  {{ref('mrr_churned')}} churned_revenue
+on
+  new_revenue.month = churned_revenue.month
+left outer join
+  {{ref('mrr_upgrades')}} upgrade_revenue
+on
+  new_revenue.month = upgrade_revenue.month
+left outer join
+  {{ref('mrr_downgrades')}} downgrade_revenue
+on
+  new_revenue.month = downgrade_revenue.month
+where
+  -- This works in Redshift, not in Postgres
+  new_revenue.month &lt; date_trunc('month',dateadd(months,-1,current_date))
+order by
+  new_revenue.month desc
+</code></pre>
+<p>There are two important things about this query:</p>
+<ul><li>Using <code>left outer join</code> ensures that if any of the joined tables are missing a value for a certain month, those months are included but with a <code>null</code> value.</li>
+<li>We exclude the current month as always renders incomplete and shows generally alarming figures until the month ends.</li>
+</ul><h2>Why use SQL at all?</h2>
+<p>The thing I find most powerful about charting in this way is that the result is <code>idempotent</code>. This is a fancy engineering word that means &ldquo;you can run it hundreds of times and get the same output&rdquo;.</p>
+<p>Thanks to Stitch, Redshift, and DBT you can reload the raw data and re-run the queries and get the exact output every time. One of the challenges I&rsquo;ve always found with Amplitude, Mixpanel, and others is that sending data via API makes it easy to load raw data twice or to have poor visibility on <strong>which</strong> data <strong>is</strong> present. I feel this approach solves that.</p>
+<p>On top of that, the beauty of using SQL for this sort of charting is that you can:</p>
+<ul><li>Fully customise your charts.</li>
+<li>Query across datasets and event databases, allowing you to do really sophisticated analyses. </li>
+<li>Check your SQL code into GitHub or similar so you have a versioned history of every query and dashboard.</li>
+</ul><p>We&rsquo;ve found running SQL queries allows us to produce consolidated reports which actually get looked at and actioned. It&rsquo;s forced us to be selective about what we query and this may be one of the most valuable aspects of the whole thing!</p>
+<p><strong>Note:</strong>&nbsp;this script is slightly different from the one we use in production and has been pared down for this article, so if you see improvements or breaking code (though, it has been tested with our setup), please let me know and we&rsquo;ll update it.</p></body>
+<!-- Mirrored from www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:29:19 GMT -->
+</html>
+<!--<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+			xmlns:dc="http://purl.org/dc/elements/1.1/"
+			xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="https://www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/"
+    dc:identifier="https://www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/"
+    dc:title="Graphing net churn using Redshift, DBT and Mode Analytics"
+    trackback:ping="https://www.getvero.com/resources/graphing-net-churn-using-redshift-dbt-mode-analytics/trackback/" />
+</rdf:RDF>-->
+</div>    <div class='subscribe-form center-block'>
+      <h2>Get our latest blog posts,<br>product news and tips straight to your inbox.</h2>
+      <form action='https://app.getvero.com/forms/0eefc98b2dc881e7c0888ae698833577' method='post'>
+          <input id="footer-email-address"  name='email' type='email' class="form-control" placeholder="email@address.com"></input>
+          <input name='redirect_on_success' type='hidden' value='https://veropublic.wpengine.com/subscribed-to-the-blog/' />
+          <input name='user[consent_marketing]' type='hidden' value='true' />
+          <input name='user[consent_product_updates]' type='hidden' value='true' />
+          <input type='submit' value='Subscribe' class="btn btn-success left-margin-tiny"/>
+      </form>
+      <p class="mini">By subscribing, you consent to let Vero send you messages regarding marketing and product. You can learn more in our <a href="../../privacy/index.html" target="_blank">Privacy Notice</a>, and you can opt out or change your consent at any time.</p>
+    </div>
+  <footer class="entry-footer"></footer></article>
+<div id="disqus_thread"></div>
+</main><aside class="widget-area"><section id="text-9" class="widget-odd widget-last widget-first widget-1 subscribe widget widget_text"><div class="widget-wrap"><h4 class="widget-title widgettitle">Subscribe for updates</h4>
+			<div class="textwidget"><p>Get our latest blog posts, product news and tips straight to your inbox.</p>
+<form class="mini-subscribe" action='https://app.getvero.com/forms/0eefc98b2dc881e7c0888ae698833577' method='post'>
+  <input id="sidebar-email-address" class="email-add form-control" name='email' type='email' placeholder="Email Address" />
+<input name='redirect_on_success' type='hidden' value='https://veropublic.wpengine.com/subscribed-to-the-blog/' />
+<input name='user[consent_marketing]' type='hidden' value='true' />
+<input name='user[consent_product_updates]' type='hidden' value='true' />
+<input type="submit" class="btn btn-success" value="Subscribe">
+</form>
+<p class="mini">By subscribing, you consent to let Vero send you messages regarding marketing and product. You can learn more in our <a href="https://veropublic.wpengine.com/privacy" target="_blank">Privacy Notice</a>, and you can opt out or change your consent at any time.</p></div>
+		</div></section>
+</aside></div></div><footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter"><div class="wrap">  <section id="call-to-action" class="center-text dark-box">
+    <div class="inner">
+      <h1 class="cta-title">Put your data first and craft better product experiences</h1>
+      <p class="sub-heading">Create a free account, import your data and see how Vero can help your team.</p>
+      <a class="btn btn-success btn-large btn-wide" href="http://app.getvero.com/signup">Get started</a>
+    </div>
+  </section>
+    <div class="main-footer">
+      <ul class="col">
+    <li id="logo"><a href="../../index.html"><img src="../../wp-content/themes/vero/assets/images/home/logo/logo-white.svg" width="104"></a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Product</li>
+    <li><a href="../../features/index.html">Features</a></li>
+    <li><a href="../../workflows/index.html">Workflows</a></li>
+    <li><a href="../../event-manager/index.html">Event Management</a></li>
+    <li><a href="../../fusion/index.html">Fusion</a></li>
+    <li><a href="../../multi-language-campaigns/index.html">Multi-language</a></li>
+    <li><a href="../../reporting/index.html">Reporting</a></li>
+    <li><a href="../../integrations/vero-segment/index.html">Vero &plus; Segment</a></li>
+    <li><a href="../../integrations/vero-stitch/index.html">Vero &plus; Stitch</a></li>
+    <li><a href="../../integrations/vero-snowplow/index.html">Vero &plus; Snowplow</a></li>
+    <li><a href="../../pricing.html">Pricing</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Resources</li>
+    <!--<li>About</li>-->
+    <li><a href="../index.html" target="_blank">Blog</a></li>
+    <li ><a href="../../email-personalization-liquid-guide.html" target="_blank">Liquid Guide</a></li>
+    <li><a href="https://help.getvero.com/" target="_blank">Help Center</a></li>
+    <li><a href="https://developers.getvero.com/" target="_blank">API Reference</a></li>
+    <li><a href="https://releasenotes.getvero.com/" target="_blank">Release Notes</a></li>
+    <li><a href="https://status.getvero.com/" target="_blank">Status</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Company</li>
+    <li><a href="../../careers/index.html">Careers</a><a href="../../careers/index.html" class="hiring-pill left-margin-tiny">We're Hiring!</a></li>
+    <li><a href="../../terms-of-service/index.html">Terms of Service</a></li>
+    <li><a href="../../privacy/index.html">Privacy Policy</a></li>
+    <li><a href="../../gdpr/index.html">GDPR</a></li>
+    <li><a href="https://twitter.com/getvero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @getvero</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+  </ul>
+    </div>
+</div></footer></div><script data-cfasync="false">
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+      var logout_link = document.querySelectorAll('a[href*="wp-login.php?action=logout"]');
+      if (logout_link) {
+        for(var i=0; i < logout_link.length; i++) {
+          logout_link[i].addEventListener( "click", function() {
+            Intercom('shutdown');
+          });
+        }
+      }
+    }
+  };
+</script>
+<script data-cfasync="false">
+  window.intercomSettings = {"app_id":"i8y1wtxu"};
+</script>
+<script data-cfasync="false">(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/i8y1wtxu';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/_inc/build/photon/photon.minb3d9.js?ver=20130122'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"theveroblog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/disqus-comment-system/public/js/comment_count952b.js?ver=3.0.16'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var embedVars = {"disqusConfig":{"integration":"wordpress 3.0.16"},"disqusIdentifier":"7612 https:\/\/veropublic.wpengine.com\/?p=7612","disqusShortname":"theveroblog","disqusTitle":"Graphing net churn using Redshift, DBT and Mode Analytics","disqusUrl":"https:\/\/www.getvero.com\/resources\/graphing-net-churn-using-redshift-dbt-mode-analytics\/","postId":"7612"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/disqus-comment-system/public/js/comment_embed952b.js?ver=3.0.16'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201850'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var NSS = {"ajaxurl":"https:\/\/www.getvero.com\/wp-admin\/admin-ajax.php","disable_js":"","nonce":"4c170e1f4d"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/naked-social-share/assets/js/naked-social-share.min1159.js?ver=1.4.2'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Decaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/modules/wpgroho5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='../../wp-includes/js/comment-reply.min5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.waypoints.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/scripts.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/dev_message.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.bxslider.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/featherlight.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/picturefill.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.parallax-scroll.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/prism.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.cookie.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.leanModal.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/smooth-scroll.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/homepage.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/features.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/pricing.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/blog.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/imgslider.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/landing-pages.js'></script>
+<script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js'></script>
+<script type='text/javascript' src='../../wp-includes/js/wp-embed.min5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201850.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.5',blog:'103168960',post:'7612',tz:'11',srv:'www.getvero.com'} ]);
+	_stq.push([ 'clickTrackerInit', '103168960', '7612' ]);
+</script>
+</body></html>

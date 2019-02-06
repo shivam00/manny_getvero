@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	
+xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+>
+
+<channel>
+	<title>Vero</title>
+	<atom:link href="https://www.getvero.com/resources/category/product-updates/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.getvero.com</link>
+	<description></description>
+	<lastBuildDate>Wed, 07 Nov 2018 22:06:34 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>hourly</sy:updatePeriod>
+	<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=4.9.8</generator>
+<site xmlns="com-wordpress:feed-additions:1">103168960</site>	<item>
+		<title>How to create useful, easy-to-manage, fully customized help documentation</title>
+		<link>https://www.getvero.com/resources/saas-help-docs</link>
+		<comments>https://www.getvero.com/resources/saas-help-docs#respond</comments>
+		<pubDate>Tue, 20 Oct 2015 12:01:22 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Inside Vero]]></category>
+		<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://veropublic.wpengine.com/?p=7218</guid>
+		<description><![CDATA[<p>A customer-centric approach to product, marketing and support is the key to building a great company. As anyone who&#8217;s ever...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/saas-help-docs">How to create useful, easy-to-manage, fully customized help documentation</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p class="lead">A customer-centric approach to product, marketing and support is the key to building a great company.</p>
+<p>As anyone who&rsquo;s ever built a SaaS business can attest, it&rsquo;s easier said than done. We always aim to help customers find their way and this, ultimately, served as the foundation for our decision to build our own help documentation.</p>
+<p>Here&rsquo;s a perfect example of how that approach manifests itself in a busy, growing company.</p>
+<p>Last week, we launched new a help documentation site, <a href="http://help.getvero.com/">help.getvero.com</a>, to make it easy for customers to get started, use our API and answer technical questions about Vero. The new help docs are faster, more robust and just plain more helpful than our previous docs.</p>
+<p>To power the new setup, we are using <a href="https://pages.github.com/" target="_blank">Github Pages</a>, <a href="https://jekyllrb.com/" target="_blank">Jekyll</a>, <a href="http://algolia.com" target="_blank">Algolia</a> as well as our own <a href="http://gruntjs.com/" target="_blank">Grunt</a> deployment to host our CSS on the AWS CloudFront CDN. The infrastructure is better, the design is cleaner and the content is more useful. The end result is a focused site that meets the needs of our customers. Additionally, anyone can suggest changes, whether they be internal Vero team members (both engineers and non-engineers), customers or otherwise.</p>
+<p>This post explores the reasons we chose to build our own help docs, the challenges we ran into, and how we stay focused on a customer-centric solution. Everything is open-source, so anyone can use this setup as a viable alternative to the various hosted SaaS help doc options.</p>
+<blockquote class="snippet"><p>As mentioned above, we have published our new help documentation as a <a href="https://github.com/getvero/getvero.github.io" target="_blank"><em>public repository on Github</em></a><em> that <strong>anyone</strong> can </em><a href="https://guides.github.com/activities/forking/" target="_blank"><em>fork</em></a><em> and edit to create their own help documentation (you can also create pull requests for updates to our own help articles). </em></p></blockquote>
+<h2>Why we rebuilt our help documentation</h2>
+<p><img data-attachment-id="7272" data-permalink="https://www.getvero.com/resources/saas-help-docs/vero-help-docs/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-help-docs.png?fit=950%2C570&amp;ssl=1" data-orig-size="950,570" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vero-help-docs" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-help-docs.png?fit=300%2C180&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-help-docs.png?fit=950%2C570&amp;ssl=1" class="alignnone size-full wp-image-7272" src="/wp-content/uploads/2015/10/vero-help-docs.png" alt="vero-help-docs" width="950" height="570" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-help-docs.png?w=950&amp;ssl=1 950w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-help-docs.png?resize=300%2C180&amp;ssl=1 300w" sizes="(max-width: 950px) 100vw, 950px"></p>
+<p>We previously hosted our help articles on WordPress. Using a custom post type, docs were hosted on the same installation as our marketing website. WordPress was easy for our entire team, including the less-technical among us, to use and all us of pitched in.</p>
+<p>Ultimately, this created some real challenges.</p>
+<p>Using custom post types buried our help documentation inside WordPress, making it hard to find and update old articles. Our engineers weren&rsquo;t invested in the infrastructure, making it too easy to put off updating the docs when we launched new features. Worse yet, we&rsquo;d never spent the time to draft a style guide, so help articles were inconsistent and repetitive.</p>
+<h2>The decision to build, not buy</h2>
+<p>When we committed to fixing our help doc problem, the team evaluated a number of off-the-shelf solutions, including HelpJuice, Help Scout&rsquo;s Docs, Zendesk&rsquo;s Knowledge Base and a few other great products.</p>
+<p>We use Help Scout for our email support (absolutely love it) and have previously used HelpJuice. Each is a great solution, but we couldn&rsquo;t find a product that met our four key needs, which directly support our customers&rsquo; needs:</p>
+<ol><li>
+<p>We wanted search to be super-fast. Slow search is almost as bad as no search. <em>We know from testing that it&rsquo;s how most customers find the help they need.</em></p>
+</li>
+<li>
+<p>We wanted to be able to feature our <a href="http://status.getvero.com" target="_blank">status page updates</a>, hosted on <a href="http://statuspage.io" target="_blank">StatusPage.io</a> as part of our design. <em>Uptime is a feature and we want customers to know when we run into challenges that affect them.</em></p>
+</li>
+<li>
+<p>We wanted to build a foundation that will allow for future customization. <em>Support videos are the next thing to add but who knows that the future of support holds. We want to be ready to adapt quickly.</em></p>
+</li>
+<li>
+<p>We wanted to be able to manage our own categories and navigation. <em>We already know where customers run into trouble so crafting sensible navigation can guide them to quick answers.</em></p>
+</li>
+</ol><p>When none of the aforementioned tools met these requirements in the way we really wanted, we began discussing the idea of building out our platform. The idea seemed crazy at first. After all, why reinvent the wheel? It would mean managing a CMS, worrying about deploys, setting up local environments, and worst of all, potentially wasting a lot of time.</p>
+<p>We all baulked at a homegrown solution but did some research to confirm our suspicions. What we found, however, was that using Jekyll, <a href="https://github.com/algolia/algoliasearch-jekyll" target="_blank">Algolia&rsquo;s Search for Jekyll Plugin</a>, <a href="https://desktop.github.com/" target="_blank">GitHub Desktop</a> and <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>, we could actually run custom help articles with no deployment scripts, blazing fast search and a completely custom user interface.</p>
+<h2>Find a solution that works for engineers and non-techies.</h2>
+<p>Everyone on the team contributes to support, so everyone should be able to create and edit articles. Github&rsquo;s Desktop tool makes it easy to update and deploy help articles, but it&rsquo;s a new world for our less-technical team members. This is a real concern as getting developers engaged but losing the rest of the team wouldn&rsquo;t solve our problem.</p>
+<p>Interestingly, less-technical team members embraced the solution. It&rsquo;s a good excuse to learn a bit of code and it brought different areas of the company together. We set a hard deadline to complete our docs and everyone contributed to the launch. There&rsquo;s nothing like a due date to kick off a new process.</p>
+<p>The key to this has been managing this process in three ways.</p>
+<ol><li>
+<p><strong>Using GitHub Desktop.</strong> It&rsquo;s a lightweight tool that makes it easy for anyone to contribute code to a repository. Thanks to the magic of GitHub Pages, every deploy and push (or sync) to the <code>master</code> branch of our help repository means the code is automatically deployed. This is a huge win because it makes it easy for anyone on our team to get a local copy of the help articles on their computer, so they can edit them with their favourite Markdown editor. That means we can use the best tools for the each job &ndash; rather than the less-than-ideal online text editor offered by WordPress, team members can use their own editors. Rather than using WordPress&rsquo; limited functionality, we can build our own with Jekyll. Win-win.<img data-attachment-id="7275" data-permalink="https://www.getvero.com/resources/saas-help-docs/github-desktop-3/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?fit=1141%2C619&amp;ssl=1" data-orig-size="1141,619" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="github-desktop" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?fit=300%2C163&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?fit=1024%2C556&amp;ssl=1" class="alignnone size-full wp-image-7275" src="/wp-content/uploads/2015/10/github-desktop2.png" alt="github-desktop" width="1141" height="619" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?w=1141&amp;ssl=1 1141w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?resize=300%2C163&amp;ssl=1 300w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/github-desktop2.png?resize=1024%2C556&amp;ssl=1 1024w" sizes="(max-width: 1000px) 100vw, 1000px"></p>
+</li>
+</ol><ol start="2"><li>
+<p><strong>Teaching our less-technical members about </strong><a href="http://blog.ghost.org/markdown/" target="_blank"><strong>Markdown</strong></a> and simple tools like <a href="http://www.sublimetext.com/" target="_blank">Sublime Tex</a>t or <a href="http://writeapp.net/" target="_blank">Write</a>. Both applications let you open a folder of Markdown files for editing. These tools are built for editing Markdown, making them a gateway into the world of coding. We&rsquo;ve found that our less-technical team members have really embraced them.</p>
+</li>
+</ol><ol start="3"><li>
+<p><strong> Writing a </strong><a href="https://github.com/getvero/getvero.github.io#testing-locally" target="_blank"><strong>comprehensive README</strong></a> that explains, in detail, how to setup and manage the help docs repository locally. It&rsquo;s help docs for our help docs.</p>
+</li>
+</ol><p>To illustrate what we mean, we have found that all team members have been sticking to the following process:</p>
+<ol><li>We use GitHub Desktop to synchronise the latest version of the repository and help articles.</li>
+<li>We add or edit help article files in Sublime or Write using Markdown.</li>
+<li>We synchronise changes, wait for the deploy and do a final check that all looks good on the live site.</li>
+</ol><div class="blue-signup">
+<div class="interstitial">
+<div class="interstitial-left">
+<div class="blog-cta-content">
+<h1 class="">Create better customer experiences</h1>
+<p class="">Send super targeted messages with Vero.</p>
+<p><a class="btn btn-success" href="https://app.getvero.com/signup" target="_blank">Start a free trial</a></p></div>
+</div>
+<div class="interstitial-right small-image" style="px"><img class="no-border" src="/wp-content/themes/vero/assets/images/blog-cta@2x.png"></div>
+</div>
+</div>
+<h2>Maintain a consistent style. Everywhere.</h2>
+<p>To ensure our docs look great in the future, we added <a href="https://github.com/getvero/getvero.github.io#styleguide-and-rules" target="_blank">a section to the README file </a>that detailed the guidelines for creating or editing help articles. These included:</p>
+<p>every time we made some significant style changes,</p>
+<ul><li>
+<p>when to <strong>bold text;</strong></p>
+</li>
+<li>
+<p>when to use <em>italics</em>;</p>
+</li>
+<li>
+<p>when to use <code>code snippets</code>;</p>
+</li>
+<li>
+<p>and how to handle screenshots.</p>
+</li>
+</ul><p>We host our CSS centrally on an AWS CloudFront server. This is managed on a second repository (<em>vero-styles)</em> that we&rsquo;ll make public in the near future. We&rsquo;ve written some simple Grunt scripts that make it easy to run CSS changes locally, deploy them to staging and also to deploy and invalidate them on our production CloudFront node. By having our styles on Cloudfront, we minimise the load time no matter where you are in the world by serving the assets from the closest server to your location. Another win for everyone.</p>
+<p>The other benefit of separating the repositories is that no individual team member needs to touch or manage the CSS. And thanks to a well-documented style guide, it&rsquo;s still easy to ensure that the help articles, written in Markdown, will look great when it&rsquo;s deployed to production.</p>
+<p><img data-attachment-id="7276" data-permalink="https://www.getvero.com/resources/saas-help-docs/jekyll-image-data-file/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-image-data-file.png?fit=866%2C577&amp;ssl=1" data-orig-size="866,577" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="jekyll-image-data-file" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-image-data-file.png?fit=300%2C200&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-image-data-file.png?fit=866%2C577&amp;ssl=1" class="alignnone size-full wp-image-7276" src="/wp-content/uploads/2015/10/jekyll-image-data-file.png" alt="jekyll-image-data-file" width="866" height="577" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-image-data-file.png?w=866&amp;ssl=1 866w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-image-data-file.png?resize=300%2C200&amp;ssl=1 300w" sizes="(max-width: 866px) 100vw, 866px"></p>
+<p>To make it easy to review and manage images and links, we have centralised <code>links.yml</code> and <code>screenshots.yml</code> files. When we need to change the images or update the links, we only need to do so in one place.</p>
+<p>Our style guide outlines how to crop screenshots, where to put the image asset files and how to insert the file using our <code>screenshots.yml</code> file and Markdown.</p>
+<p>These rules ensure we can maintain a body of help docs that is reliable, sensible and helpful.</p>
+<h2>Address categories and &lsquo;Common Issues&rsquo;.</h2>
+<p><img data-attachment-id="7279" data-permalink="https://www.getvero.com/resources/saas-help-docs/common-issues/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/common-issues.png?fit=931%2C668&amp;ssl=1" data-orig-size="931,668" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="common-issues" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/common-issues.png?fit=300%2C215&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/common-issues.png?fit=931%2C668&amp;ssl=1" class="alignnone size-full wp-image-7279" src="/wp-content/uploads/2015/10/common-issues.png" alt="common-issues" width="931" height="668" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/common-issues.png?w=931&amp;ssl=1 931w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/common-issues.png?resize=300%2C215&amp;ssl=1 300w" sizes="(max-width: 931px) 100vw, 931px"></p>
+<p>The home page for our new help documentation is centred around categories, and a &lsquo;Common Issues&rsquo; section, where we highlight the most-asked questions.</p>
+<p>In Jekyll, we created a <a href="http://jekyllrb.com/docs/collections/" target="_blank">custom collection</a> to host our help articles so that we could define the sub-directory structure being used.</p>
+<p><img data-attachment-id="7277" data-permalink="https://www.getvero.com/resources/saas-help-docs/jekyll-help-documentation-saas/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png?fit=902%2C534&amp;ssl=1" data-orig-size="902,534" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="jekyll-help-documentation-saas" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png?fit=300%2C178&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png?fit=902%2C534&amp;ssl=1" class="alignnone size-full wp-image-7277" src="/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png" alt="jekyll-help-documentation-saas" width="902" height="534" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png?w=902&amp;ssl=1 902w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/jekyll-help-documentation-saas.png?resize=300%2C178&amp;ssl=1 300w" sizes="(max-width: 902px) 100vw, 902px"></p>
+<p>To do this, we had to define our own category management. We simply added three pieces of meta-data: <code>common_issues</code>, <code>getting_started</code> and <code>categories</code>. Each post can have a single category and, if present, the boolean value of <code>true</code> denotes that an article should also appear in the <em>Common Issues</em> and the soon-to-be-released <em>Getting started </em>headers on our help documentation.</p>
+<p>This structure is easy for everyone on our team to understand and, thanks to Jekyll&rsquo;s instant compiling, makes it easy to add or remove categories by simply no longer using a category in any help article.</p>
+<h2>Plugins and third-party tools</h2>
+<p>In pulling our help articles together, we&rsquo;ve made great use of Algolia&rsquo;s Jekyll Plugin. We wanted to write about how we handled this but it was so easy, there isn&rsquo;t much to write.</p>
+<p><img data-attachment-id="7281" data-permalink="https://www.getvero.com/resources/saas-help-docs/help-doc-search/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/help-doc-search.png?fit=936%2C466&amp;ssl=1" data-orig-size="936,466" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="help-doc-search" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/help-doc-search.png?fit=300%2C149&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/help-doc-search.png?fit=936%2C466&amp;ssl=1" class="alignnone size-full wp-image-7281" src="/wp-content/uploads/2015/10/help-doc-search.png" alt="help-doc-search" width="936" height="466" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/help-doc-search.png?w=936&amp;ssl=1 936w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/10/help-doc-search.png?resize=300%2C149&amp;ssl=1 300w" sizes="(max-width: 936px) 100vw, 936px"></p>
+<p>Basically, you install the plugin, index your help articles and then <em>go</em>. We added some extra styles to highlight terms that the customer has searched. Algolia makes this super easy by highlighting the search <em>facets</em> &ndash; so even that was too easy!</p>
+<p>We have also used <a href="http://statuspage.io" target="_blank">StatusPage.io</a>&lsquo;s awesome Javascript embed library to show customers the current status of Vero and also to highlight any open issues.</p>
+<p class=" small-image" style="244px"><img data-attachment-id="7280" data-permalink="https://www.getvero.com/resources/saas-help-docs/vero-status/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-status.png?fit=244%2C90&amp;ssl=1" data-orig-size="244,90" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="vero-status" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-status.png?fit=244%2C90&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/10/vero-status.png?fit=244%2C90&amp;ssl=1" class="alignnone size-full wp-image-7280" src="/wp-content/uploads/2015/10/vero-status.png" alt="vero-status" width="244" height="90"></p>
+<p>It&rsquo;s easy to get carried away with features and plugins. Anytime we thought of new add-on to the help docs, we simply measured it against our guiding support principle,<em> &ldquo;does this help guide our customers?&rdquo;</em></p>
+<ul><li>
+<p>In the case of well-indexed, fast search, the answer is definitely &ldquo;yes.&rdquo;</p>
+</li>
+<li>
+<p>In the case of a plugin to direct customers to our status page in the instance of issues, the answer is definitely &ldquo;yes.&rdquo;</p>
+</li>
+<li>
+<p>In the case of share buttons and comments, the answer is &ldquo;no.&rdquo;</p>
+</li>
+</ul><p>By measuring everything against a single control, we eliminated a number of unnecessary features, spent less time on design and development, and created the most helpful help docs we possibly could.</p>
+<h2>Quality help articles are a huge advantage.</h2>
+<p>Vero is a technical product and a very flexible customer communication platform. Many of our customers have between five and 30 people logging into Vero &ndash; engineers, designers, marketers, product managers, support team members &ndash; and there is no way that all of those team members want to send emails to our support team when they have a question.</p>
+<p>Great help articles guide new trial customers through the app. They help current customers learn new features. They help new team members get familiar with the software.</p>
+<p>It&rsquo;s important to consider an approach that works for your team and your customers. Customer support goes a long way in this business, so don&rsquo;t skimp on it.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/saas-help-docs">How to create useful, easy-to-manage, fully customized help documentation</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/saas-help-docs/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">7218</post-id>	</item>
+		<item>
+		<title>Product Updates: Emojis, Better Segments and File Attachments</title>
+		<link>https://www.getvero.com/resources/emojis-segments-attachments</link>
+		<comments>https://www.getvero.com/resources/emojis-segments-attachments#respond</comments>
+		<pubDate>Thu, 18 Jun 2015 14:43:15 +0000</pubDate>
+		<dc:creator><![CDATA[Jimmy Daly]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=6431</guid>
+		<description><![CDATA[<p>Our engineers are constantly working to make the Vero experience as great as possible. We push updates to the app...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/emojis-segments-attachments">Product Updates: Emojis, Better Segments and File Attachments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>Our engineers are constantly working to make the Vero experience as great as possible. We push updates to the app every week and although we&rsquo;ve always documented improvements inside the application, we plan to start publishing them here on the blog as well.</p>
+<p>Here are just a few of the improvements we&rsquo;ve launched recently.</p>
+<h3>File Attachments &#128206;</h3>
+<p>You can now attach files up to 7MB to newsletters as well as behavioral and transactional emails. This will make sending invoices, receipts and other documents much easier.</p>
+<p>To attach a document, click the &ldquo;Advanced Settings&rdquo; option when creating a new email. Here, you&rsquo;ll see options to include <a href="https://veropublic.wpengine.com/external-attributes/">external attributes</a> and attach files.</p>
+<p>We&rsquo;ve purposefully required a URL as opposed to file upload. Using a hosted file means you can use Liquid syntax to attach a unique file, like an invoice, for each recipient. You can send each recipient the same file as well, but this approach gives you much more flexibility. Additionally, we cache the files so your servers don&rsquo;t get slammed every time you send an email.</p>
+<p>It&rsquo;s important to note that sending attachments in bulk emails can be an indicator of spam. Use attachments to improve your customers&rsquo; experience but be mindful that abusing attachments is a quick way to land in the spam folder.</p>
+<p><img data-attachment-id="6481" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/vero-email-file-attachments-liquid/" data-orig-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-email-file-attachments-liquid.jpg?fit=800%2C239&amp;ssl=1" data-orig-size="800,239" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="vero email file attachments liquid" data-image-description="" data-medium-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-email-file-attachments-liquid.jpg?fit=300%2C90&amp;ssl=1" data-large-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-email-file-attachments-liquid.jpg?fit=800%2C239&amp;ssl=1" src="https://i0.wp.com/blog.getvero.com/wp-content/uploads/2015/06/vero-email-file-attachments-liquid1.jpg?resize=800%2C239" alt="vero email file attachments liquid" width="800" height="239" class="alignnone size-full wp-image-6481" data-recalc-dims="1"></p>
+<p>As always, email us at <a href="mailto:support@getvero.com">support@getvero.com</a> with any questions or feedback on updates like this.</p>
+<h3>More Powerful Segment Conditions &#128076;</h3>
+<p>In the past, you&rsquo;ve only been able to use the ALL condition to build segments. The ALL condition means you can make segments smaller and more refined.</p>
+<p>In the example below, the segment contains users who attended both our KISSmetrics webinar AND our Qualaroo webinar.</p>
+<p class=" small-image" style="508px"><img data-attachment-id="6453" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/all-condition-3/" data-orig-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?fit=508%2C227&amp;ssl=1" data-orig-size="508,227" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="all-condition" data-image-description="" data-medium-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?fit=300%2C134&amp;ssl=1" data-large-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?fit=508%2C227&amp;ssl=1" src="https://i0.wp.com/blog.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?resize=508%2C227" alt="all-condition" width="508" height="227" class="alignnone size-full wp-image-6453" srcset="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?w=508&amp;ssl=1 508w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?resize=300%2C134&amp;ssl=1 300w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?resize=224%2C100&amp;ssl=1 224w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?resize=50%2C22&amp;ssl=1 50w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/all-condition2.jpg?resize=75%2C34&amp;ssl=1 75w" sizes="(max-width: 508px) 100vw, 508px" data-recalc-dims="1"></p>
+<p>But what if you wanted to see users who attended either the KISSmetrics webinar OR the Qualaroo webinar? That was difficult until now.</p>
+<p class=" small-image" style="504px"><img data-attachment-id="6477" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/any-condition-2/" data-orig-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?fit=504%2C228&amp;ssl=1" data-orig-size="504,228" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="any-condition" data-image-description="" data-medium-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?fit=300%2C136&amp;ssl=1" data-large-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?fit=504%2C228&amp;ssl=1" src="https://i1.wp.com/blog.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?resize=504%2C228" alt="any-condition" width="504" height="228" class="alignnone size-full wp-image-6477" srcset="https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?w=504&amp;ssl=1 504w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?resize=300%2C136&amp;ssl=1 300w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?resize=221%2C100&amp;ssl=1 221w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?resize=50%2C23&amp;ssl=1 50w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2015/06/any-condition1.jpg?resize=75%2C34&amp;ssl=1 75w" sizes="(max-width: 504px) 100vw, 504px" data-recalc-dims="1"></p>
+<p>You can use ALL and ANY condition separately or together. For example, if we wanted to see paying customers who attended either the KISSmetrics webinar OR our Qualaroo webinar, we could use them together.</p>
+<p class=" small-image" style="495px"><img data-attachment-id="6455" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/any-and-all-conditions-2/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?fit=495%2C386&amp;ssl=1" data-orig-size="495,386" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="ANY-and-ALL-conditions" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?fit=300%2C234&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?fit=495%2C386&amp;ssl=1" src="https://i2.wp.com/blog.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?resize=495%2C386" alt="ANY-and-ALL-conditions" width="495" height="386" class="alignnone size-full wp-image-6455" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?w=495&amp;ssl=1 495w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?resize=300%2C234&amp;ssl=1 300w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?resize=128%2C100&amp;ssl=1 128w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?resize=50%2C39&amp;ssl=1 50w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/ANY-and-ALL-conditions1.jpg?resize=75%2C58&amp;ssl=1 75w" sizes="(max-width: 495px) 100vw, 495px" data-recalc-dims="1"></p>
+<p>We think you&rsquo;ll find plenty of uses for this new feature. <a href="https://app.getvero.com/segments/new" target="_blank">Give it a try.</a></p>
+<h3>Emoji Support &#128541; &#128074; &#128125;</h3>
+<p>We try to keep it &#128175; here at Vero, which is why we&rsquo;ve added emoji support.</p>
+<p>Emojis are an easy way to add some fun to your emails and subject lines. To add them, go to a site like <a href="http://getemoji.com/">GetEmoji.com</a> to copy and paste the ones you want to use.</p>
+<p><strong>Note:</strong> Not all email clients play nice with emojis. This doesn&rsquo;t mean you should avoid them, just something to keep in mind.</p>
+<p>Here&rsquo;s an example of recent email we sent with an emoji in the subject line.</p>
+<p><img data-attachment-id="6443" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/emoji-email-example-1/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?fit=775%2C397&amp;ssl=1" data-orig-size="775,397" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="emoji email example-1" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?fit=300%2C154&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?fit=775%2C397&amp;ssl=1" src="https://i1.wp.com/blog.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?resize=775%2C397" alt="emoji email example-1" width="775" height="397" class="alignnone size-full wp-image-6443 example-email" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?w=775&amp;ssl=1 775w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?resize=300%2C154&amp;ssl=1 300w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?resize=195%2C100&amp;ssl=1 195w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?resize=50%2C26&amp;ssl=1 50w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2015/06/emoji-email-example-1.jpg?resize=75%2C38&amp;ssl=1 75w" sizes="(max-width: 775px) 100vw, 775px" data-recalc-dims="1"></p>
+<p>This is a fun one &ndash; enjoy!</p>
+<h3>Public Bug Board &#128030;</h3>
+<p>We will now be tracking the progress of bug fixes on a public Trello board. Customers can report bugs, add comments and provide feedback throughout the process.</p>
+<p><a href="https://trello.com/b/i5HXzSvT/vero-bug-status" target="_blank">View the Vero Bug Status Board.</a></p>
+<p><img data-attachment-id="6465" data-permalink="https://www.getvero.com/resources/emojis-segments-attachments/vero-bug-status/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?fit=800%2C188&amp;ssl=1" data-orig-size="800,188" data-comments-opened="1" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;1&quot;}" data-image-title="vero bug status" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?fit=300%2C71&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?fit=800%2C188&amp;ssl=1" src="https://i1.wp.com/blog.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?resize=800%2C188" alt="vero bug status" width="800" height="188" class="alignnone size-full wp-image-6465" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?w=800&amp;ssl=1 800w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?resize=300%2C71&amp;ssl=1 300w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?resize=50%2C12&amp;ssl=1 50w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2015/06/vero-bug-status.jpg?resize=75%2C18&amp;ssl=1 75w" sizes="(max-width: 800px) 100vw, 800px" data-recalc-dims="1"></p>
+<p>And that&rsquo;s a wrap! Check back next week for more updates. And if you&rsquo;d like to try these features for yourself, <a href="/pricing">check out our free trial to kick the tires free for two weeks</a>.</p>
+<hr><p><em>We are laser-focused on building a great product with great people. <a href="http://getvero.com/jobs" target="_blank">Want to join us?</a></em></p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/emojis-segments-attachments">Product Updates: Emojis, Better Segments and File Attachments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/emojis-segments-attachments/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">6431</post-id>	</item>
+		<item>
+		<title>Vero joins AirPair Trusted Partner Experts</title>
+		<link>https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/</link>
+		<comments>https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/#respond</comments>
+		<pubDate>Mon, 03 Mar 2014 11:26:52 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1999</guid>
+		<description><![CDATA[<p>We&#8217;re happy to announce teaming up with AirPair to give you customers a new way to connect with our team...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/">Vero joins AirPair Trusted Partner Experts</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>We&rsquo;re happy to announce teaming up with AirPair to give you customers a new way to connect with our team and one another when implementing our smarter email marketing platform in your apps.</p>
+<p>If you&rsquo;d like to pair up when setting up Vero check out our <a href="http://www.airpair.com/vero">Vero Experts</a> page on AirPair. You can book time with our experts to get assistance with your Vero integration via video chat and screen sharing. The focus here is on the technical aspect of getting Vero setup on your website or with your product and we&rsquo;re excited to make this easier.</p>
+<p><span id="more-1999"></span></p>
+<p><img data-attachment-id="2001" data-permalink="https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/airpair-trusted-network/" data-orig-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?fit=685%2C472&amp;ssl=1" data-orig-size="685,472" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="airpair-trusted-network" data-image-description="" data-medium-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?fit=300%2C207&amp;ssl=1" data-large-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?fit=685%2C472&amp;ssl=1" class="alignnone size-full wp-image-2001" alt="airpair-trusted-network" src="/wp-content/uploads/2014/03/airpair-trusted-network.jpg" width="685" height="472" srcset="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?w=685&amp;ssl=1 685w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?resize=300%2C207&amp;ssl=1 300w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?resize=145%2C100&amp;ssl=1 145w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?resize=50%2C34&amp;ssl=1 50w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/03/airpair-trusted-network.jpg?resize=75%2C52&amp;ssl=1 75w" sizes="(max-width: 685px) 100vw, 685px"></p>
+<p>&nbsp;</p>
+<p>Both <a href="https://twitter.com/jylamont">James</a> and <a href="https://twitter.com/damienbrz">Damien</a> will be available to help you through your Vero integration troubles and, as we find this helps, we&rsquo;ll expand the number of experts available!</p>
+<p>You can read the full details about our collaboration with AirPair on our <a href="http://www.airpair.com/news/2014-02/airpair-trusted-partner-experts">Trusted Partner Community Experts Page</a>.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/">Vero joins AirPair Trusted Partner Experts</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/vero-joins-airpair-trusted-partner-experts/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1999</post-id>	</item>
+		<item>
+		<title>Product Update: Better email preview and expanded segments</title>
+		<link>https://www.getvero.com/resources/email-marketing-segmentation/</link>
+		<comments>https://www.getvero.com/resources/email-marketing-segmentation/#respond</comments>
+		<pubDate>Fri, 28 Feb 2014 12:04:09 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1981</guid>
+		<description><![CDATA[<p>Over the last 10 days we&#8217;ve released three great new features that will help you use Vero faster and more...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/email-marketing-segmentation/">Product Update: Better email preview and expanded segments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>Over the last 10 days we&rsquo;ve released three great new features that will help you use Vero faster and more intelligently every day.</p>
+<p>There&rsquo;s lots more coming so stay tuned over the next two months.</p>
+<p><span id="more-1981"></span></p>
+<h2>Customer data and in-browser previews</h2>
+<p>When previewing emails in the past Vero would automatically select a customer and use their properties to replace any <a href="https://veropublic.wpengine.com/docs/dynamic-variables">dynamic variables in your email</a>.</p>
+<p>You can now select the customer whose data you want to use in your templates when sending a preview:</p>
+<p><a href="/wp-content/uploads/2014/02/dynamic-variables-in-preview.png"><img data-attachment-id="1982" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/dynamic-variables-in-preview/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?fit=670%2C518&amp;ssl=1" data-orig-size="670,518" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dynamic-variables-in-preview" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?fit=300%2C232&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?fit=670%2C518&amp;ssl=1" class="alignnone size-full wp-image-1982" alt="dynamic-variables-in-preview" src="/wp-content/uploads/2014/02/dynamic-variables-in-preview.png" width="670" height="518" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?w=670&amp;ssl=1 670w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?resize=300%2C232&amp;ssl=1 300w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?resize=129%2C100&amp;ssl=1 129w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?resize=50%2C39&amp;ssl=1 50w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-in-preview.png?resize=75%2C58&amp;ssl=1 75w" sizes="(max-width: 670px) 100vw, 670px"></a></p>
+<p>If you had a template like this:</p>
+<p class=" small-image" style="604px"><a href="/wp-content/uploads/2014/02/dynamic-variables-email.png"><img data-attachment-id="1983" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/dynamic-variables-email/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?fit=604%2C430&amp;ssl=1" data-orig-size="604,430" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dynamic-variables-email" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?fit=300%2C214&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?fit=604%2C430&amp;ssl=1" class="alignnone size-full wp-image-1983" alt="dynamic-variables-email" src="/wp-content/uploads/2014/02/dynamic-variables-email.png" width="604" height="430" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?w=604&amp;ssl=1 604w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?resize=300%2C214&amp;ssl=1 300w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?resize=140%2C100&amp;ssl=1 140w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?resize=50%2C36&amp;ssl=1 50w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-email.png?resize=75%2C53&amp;ssl=1 75w" sizes="(max-width: 604px) 100vw, 604px"></a></p>
+<p>&nbsp;</p>
+<p>&hellip;it&rsquo;d render like this:</p>
+<p class=" small-image" style="486px"><a href="/wp-content/uploads/2014/02/dynamic-variables-preview.png"><img data-attachment-id="1984" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/dynamic-variables-preview/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?fit=486%2C172&amp;ssl=1" data-orig-size="486,172" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="dynamic-variables-preview" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?fit=300%2C106&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?fit=486%2C172&amp;ssl=1" class="alignnone size-full wp-image-1984" alt="dynamic-variables-preview" src="/wp-content/uploads/2014/02/dynamic-variables-preview.png" width="486" height="172" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?w=486&amp;ssl=1 486w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?resize=300%2C106&amp;ssl=1 300w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?resize=283%2C100&amp;ssl=1 283w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?resize=50%2C18&amp;ssl=1 50w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/dynamic-variables-preview.png?resize=75%2C27&amp;ssl=1 75w" sizes="(max-width: 486px) 100vw, 486px"></a></p>
+<p>&nbsp;</p>
+<p>This feature makes it easy for you to test different permutations of a campaign, particularly if you want to test what it will look like for customers without a particular property (which is why you should always <a href="https://veropublic.wpengine.com/knowledge-base#/questions/57020-Fallback-for-dynamic-templating-variables">use a fallback</a>).</p>
+<p>You can also now preview emails directly in your browser. This feature has been on the cards for far too long so we&rsquo;re glad to say it&rsquo;s now here. You can preview emails via the <em>Actions</em> drop down next to your campaign:</p>
+<p class=" small-image" style="188px"><a href="/wp-content/uploads/2014/02/preview-in-browser.png"><img data-attachment-id="1985" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/preview-in-browser/" data-orig-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?fit=188%2C247&amp;ssl=1" data-orig-size="188,247" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="preview-in-browser" data-image-description="" data-medium-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?fit=188%2C247&amp;ssl=1" data-large-file="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?fit=188%2C247&amp;ssl=1" class="alignnone size-full wp-image-1985" alt="preview-in-browser" src="/wp-content/uploads/2014/02/preview-in-browser.png" width="188" height="247" srcset="https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?w=188&amp;ssl=1 188w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?resize=76%2C100&amp;ssl=1 76w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?resize=38%2C50&amp;ssl=1 38w, https://i0.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-in-browser.png?resize=57%2C75&amp;ssl=1 57w" sizes="(max-width: 188px) 100vw, 188px"></a></p>
+<p>&nbsp;</p>
+<p>You can also preview in browser whilst editing the campaigns, really helpful if you&rsquo;re using a template.</p>
+<p class=" small-image" style="608px"><a href="/wp-content/uploads/2014/02/preview-whilst-editing-template.png"><img data-attachment-id="1986" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/preview-whilst-editing-template/" data-orig-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?fit=608%2C477&amp;ssl=1" data-orig-size="608,477" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="preview-whilst-editing-template" data-image-description="" data-medium-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?fit=300%2C235&amp;ssl=1" data-large-file="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?fit=608%2C477&amp;ssl=1" class="alignnone size-full wp-image-1986" alt="preview-whilst-editing-template" src="/wp-content/uploads/2014/02/preview-whilst-editing-template.png" width="608" height="477" srcset="https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?w=608&amp;ssl=1 608w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?resize=300%2C235&amp;ssl=1 300w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?resize=127%2C100&amp;ssl=1 127w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?resize=50%2C39&amp;ssl=1 50w, https://i1.wp.com/www.getvero.com/wp-content/uploads/2014/02/preview-whilst-editing-template.png?resize=75%2C59&amp;ssl=1 75w" sizes="(max-width: 608px) 100vw, 608px"></a></p>
+<p>&nbsp;</p>
+<p>Note that all previews, including in-browser previews, pull through external data if you&rsquo;re using our <a href="http://blog.getvero.com/new-product-feature-external-attributes/">external attributes features</a> to enhance your campaigns.</p>
+<h2>Expanded segments</h2>
+<p>Prior to last week our segments didn&rsquo;t have the full set of conditions that our automated campaigns have. Segments grew out of customer feedback to make groups of customers more distinct and to help use the same conditions time and again.</p>
+<p>Thanks to this latest update our segments now have the full set of conditions you know and love:</p>
+<p class=" small-image" style="344px"><a href="/wp-content/uploads/2014/02/segments.png"><img data-attachment-id="1989" data-permalink="https://www.getvero.com/resources/email-marketing-segmentation/segments-2/" data-orig-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?fit=344%2C357&amp;ssl=1" data-orig-size="344,357" data-comments-opened="0" data-image-meta="{&quot;aperture&quot;:&quot;0&quot;,&quot;credit&quot;:&quot;&quot;,&quot;camera&quot;:&quot;&quot;,&quot;caption&quot;:&quot;&quot;,&quot;created_timestamp&quot;:&quot;0&quot;,&quot;copyright&quot;:&quot;&quot;,&quot;focal_length&quot;:&quot;0&quot;,&quot;iso&quot;:&quot;0&quot;,&quot;shutter_speed&quot;:&quot;0&quot;,&quot;title&quot;:&quot;&quot;,&quot;orientation&quot;:&quot;0&quot;}" data-image-title="segments" data-image-description="" data-medium-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?fit=289%2C300&amp;ssl=1" data-large-file="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?fit=344%2C357&amp;ssl=1" class="alignnone size-full wp-image-1989" alt="segments" src="/wp-content/uploads/2014/02/segments.png" width="344" height="357" srcset="https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?w=344&amp;ssl=1 344w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?resize=289%2C300&amp;ssl=1 289w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?resize=96%2C100&amp;ssl=1 96w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?resize=48%2C50&amp;ssl=1 48w, https://i2.wp.com/www.getvero.com/wp-content/uploads/2014/02/segments.png?resize=72%2C75&amp;ssl=1 72w" sizes="(max-width: 344px) 100vw, 344px"></a></p>
+<p>&nbsp;</p>
+<p>This means your segments can now house all of your conditions, allowing you to send newsletters that are more targeted and to make your automated campaigns clearer than ever before.</p>
+<p>If you have any suggestions or questions about these features, please send us an email via <a href="mailto:support@getvero.com">support@getvero.com</a>. If you want to see them in action, <a href="http://app.getvero.com/signup">sign up for a free trial</a> or <a href="http://app.getvero.com/login">login to your account</a>. The new segments, in particular, are extremely powerful. Check them out.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/email-marketing-segmentation/">Product Update: Better email preview and expanded segments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/email-marketing-segmentation/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1981</post-id>	</item>
+		<item>
+		<title>Helping You Achieve More With Email: Updates Coming To Vero</title>
+		<link>https://www.getvero.com/resources/upcoming-email-marketing-updates-2014-q1/</link>
+		<comments>https://www.getvero.com/resources/upcoming-email-marketing-updates-2014-q1/#comments</comments>
+		<pubDate>Thu, 30 Jan 2014 16:28:31 +0000</pubDate>
+		<dc:creator><![CDATA[dbrzoska]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1508</guid>
+		<description><![CDATA[<p>2014 is going to be a great year for email marketing. It looks like there is going to be an...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/upcoming-email-marketing-updates-2014-q1/">Helping You Achieve More With Email: Updates Coming To Vero</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>2014 is going to be a great year for email marketing. It looks like there is going to be an ever-increasing focus on mobile, better segmentation (as <a href="http://techcrunch.com/2014/01/25/2014-the-year-data-becomes-a-companys-secret-weapon/">data becomes a company&rsquo;s secret weapon</a>) and the recipient (particularly with UX changes and innovations from Gmail).</p>
+<p>To meet these demands, we&rsquo;re working on some awesome new ideas and features at Vero.</p>
+<p>Here&rsquo;s a look at what we&rsquo;ve got coming in 2014.</p>
+<p><span id="more-1508"></span></p>
+<h2 id="segmentation-gets-smarter">Segmentation gets smarter</h2>
+<p>In mid-2013 we released <em>segments</em>, a feature that allows you to group and name a set of <em>conditions</em> so that you can easily see the number of matching customers. Typical segments might include &ldquo;Used feature X 4 times&acirc;&#128;&#157;, &ldquo;Never paid&acirc;&#128;&#157;, &acirc;&#128;&#156;Loyal customers&acirc;&#128;&#157;, &acirc;&#128;&#156;Blog subscribers&acirc;&#128;&#157; and so on.</p>
+<p>Segments are awesome because they are dynamic: they remain consistently up to date as your customers interact with your website.</p>
+<p>However, there is <strong>so much more</strong> segments can do.</p>
+<p>For the most successful Vero customers, <strong>speed</strong> is everything. Being able to readily target a specific group of customers makes a huge difference.</p>
+<p>We&rsquo;re working toward some improvements that will do a lot of heavy lifting around segmentation for you, by <strong>automatically creating relevant segments</strong> as your customers do more on your site. We want you to be able to login and see segments such as &lsquo;Fresh&rsquo; (for new subscribers, as an example), &acirc;&#128;&#152;Gone Quiet&rsquo; (for customers that haven&rsquo;t interacted with an email for a while), &lsquo;iPhone users&rsquo; (for customers that open your email predominantly on iOS), &lsquo;US customers&rsquo;, &lsquo;Customers with a Facebook account&rsquo;, etc.</p>
+<p>A lot of this information can be gleaned readily from customers&rsquo; IP addresses, open meta-data and even social networks. Data that we have access to and will save you a lot of importing, exporting, manipulation and other tasks. This means you can test marketing ideas <strong>faster</strong>, which is what counts. Speed of iteration is everything.</p>
+<p>If you can see how this will benefit your tests and targeting and are interested in being one of the first to pilot this functionality then please let us know <a href="mailto:support@getvero.com?subject=I%20want%20automated%20segments">via email</a> &ndash; we would love to share the future.</p>
+<h2 id="better-email-workflow-and-recurring-emails">Better email workflow and recurring emails</h2>
+<p>One of the things we&rsquo;ve come to understand from talking to you all is that creating an email in Vero right now is a little disjointed: it can sometimes be difficult to know when you should launch an automated campaign or run a newsletter, or whether there is a gap to fill between the two.</p>
+<p>We&rsquo;re upgrading our UI so that creating <strong>any</strong> type of email campaign is a unified experience. Right now, you can&rsquo;t clone between newsletters, transactional or behavioural emails nor can you quickly and change targeting options.</p>
+<p>We&rsquo;re working to breakdown the campaign creation process into 3 or 4 easily digestible steps that are the same regardless of what sort of campaign you are creating. This will make it much easier to know who you&rsquo;re target and when the email will be sent, allowing you to select whether you want the campaign to go out now, at a certain point in time in the future, weekly or based on an explicit customer action: it should be easy to send to the customers you want to.</p>
+<p>We&rsquo;re wireframing this now and will be sharing it with some customers in the next week or two.</p>
+<h2 id="essential-upgrades-for-customers">Essential upgrades for customers</h2>
+<p>No doubt the most important thing for us is to consistently ensure Vero is a powerful and <strong>fast</strong> product. As many of you know we&rsquo;ve had scaling challenges these last few months and it&rsquo;s been as painful for us as it is for you! We hate it when you can&rsquo;t do everything you <em>want to</em> as quickly as you <em>need to</em>.</p>
+<p>Two things coming <strong>very</strong> soon:</p>
+<ol><li><strong>Improved event and email logs</strong>. Last week we released an updated <a href="http://app.getvero.com/email-log">Email Log</a> that now leverages the phenomenal power of ElasticSearch. It&rsquo;s been a big task migrating data across but we&rsquo;re really happy with the results. Likewise we&rsquo;ll be releasing a fully up-to-date, speedy version of the <a href="http://app.getvero.com/event-log">Event Log</a> in the coming week and a half.</li>
+<li><strong>Better filtering</strong>. We&rsquo;re about to release a whole range of new filters for our segments and automated campaigns, including filtering on opens and clicks, past delivery actions, better detail for &lsquo;has triggered event&rsquo; and others. This should make a lot of people very happy!</li>
+</ol><p>We&rsquo;re also working on these great updates:</p>
+<ul><li>Better event management: being able to hide and alter events you are tracking.</li>
+<li>Easier integration with other platforms and by tracking more &lsquo;default&rsquo; customer actions.</li>
+<li>Better reporting: bringing back day-by-day graphs!</li>
+<li>Better splits on conversion metrics: view-through vs. direct tracking.</li>
+</ul><h2 id="things-you-might-have-missed">Things you might have missed</h2>
+<p>Over the past 3-4 months, here are some of the things we&rsquo;ve released that are worth re-capping, in case you&rsquo;ve missed theM:</p>
+<ul><li><strong><a href="http://blog.getvero.com/new-product-feature-external-attributes/">External data</a>:</strong> Using our &lsquo;Fetch HTML&rsquo; functionality you can make a call to your own servers to colelct data before an email goes out. There is <a href="https://veropublic.wpengine.com/knowledge-base#/questions/57019-Fetch-external-(-remote)-data-before-sending-email">more data available on this feature</a> and it can be used on a customer-by-customer basis to personalize every single outgoing email. We have seen some customers do some amazing things with this tool.</li>
+<li><strong>[Transactional emails]:</strong> These are in beta. If you want access to the ability to send emails every time a customer takes an action, regardless of their subscribe status, drop us an email!</li>
+<li><strong><a href="http://blog.getvero.com/emails-newsletters/">Newsletters</a>:</strong> Send newsletters to your customers at any time and put all the good data you&rsquo;ve collected in Vero to good use.</li>
+</ul><h2 id="have-your-say">Have your say</h2>
+<p>Is there anything you wish you could do in Vero but simply can&rsquo;t?</p>
+<p>We WANT to hear what is making your life difficult or what would unlock new power for your email marketing.</p>
+<p><a href="mailto:support@getvero.com">Email us</a>!</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/upcoming-email-marketing-updates-2014-q1/">Helping You Achieve More With Email: Updates Coming To Vero</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/upcoming-email-marketing-updates-2014-q1/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1508</post-id>	</item>
+		<item>
+		<title>2013 In Review: Thank You, 1300% Growth, A Product You Love And Support That Rocks</title>
+		<link>https://www.getvero.com/resources/startup-first-year-growth/</link>
+		<comments>https://www.getvero.com/resources/startup-first-year-growth/#comments</comments>
+		<pubDate>Mon, 02 Dec 2013 11:46:30 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1192</guid>
+		<description><![CDATA[<p>As we head into December 2013 I put together a summary of the last 11 months for the Vero team....</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/startup-first-year-growth/">2013 In Review: Thank You, 1300% Growth, A Product You Love And Support That Rocks</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>As we head into December 2013 I put together a summary of the last 11 months for the Vero team.</p>
+<p>I wanted to share it with you too.</p>
+<p>Before I get into the details I want to say <b>a huge thank you</b> from all of us at Vero. We&rsquo;ve had an awesome year working with some amazing customers. Everyone&rsquo;s feedback and contributions have been unbelievable and it&rsquo;s phenomenal to hear the success stories coming from those using Vero.</p>
+<p>Thank you to everyone who has stuck with us, helped us improve and used Vero to make a dent in their marketing. We&rsquo;re excited for what the next year holds. At Vero we&rsquo;re going through a period of high growth and are looking forward to the many exciting updates we plan to roll out over the next 12 months!</p>
+<p>The following summary is broken down into four parts: product, growth, support and the future. Since the start of the year we&rsquo;ve already grown over 1300%. This should be no surprise for a young internet company. In fact, we think we should be growing faster! It&rsquo;s been a year we can be proud of (and we&rsquo;re not done yet). Here&rsquo;s what we&rsquo;ve achieved, what we could have done better and what we&rsquo;re planning for 2014 and beyond.</p>
+<p><span id="more-1192"></span></p>
+<h2>Product</h2>
+<p>The first email ever sent using Vero went out on 1 June 2012. It was, of course, a test email on our own account but a momentous day none-the-less.</p>
+<p>Validating quickly, we got our first paying customers in August 2012, nearly all of whom are still with us (you guys know who you are and you are awesome!)</p>
+<p>Just 15 months later we find ourselves, finally, with a robust product. Watching Dan from Optimizely <a href="http://www.youtube.com/watch?v=k4_3uluQsq4">speak recently at YC</a> we nodded our heads as he talked about the first 12 months being a journey to product/market fit. This was completely the case for Vero and we only truly feel we&rsquo;ve cracked the nut in the last few months.</p>
+<p>In September and October we ran two little surveys that gave us some great feedback. Firstly, we asked customers how likely they were to share or recommend Vero to a friend. This is regularly termed Net Promoter Score (NPS) and we used <a href="http://qualaroo.com">Qualaroo</a> to make life easy.</p>
+<p>The average score was 8 out of 10, with nearly 80% of respondents giving a score of 7 or higher and nearly 45% of customers scoring 9-10. We know we can get this number higher but it&rsquo;s an excellent place to be at right now and we&rsquo;re grateful. We hope that by Q1 2014 60%+ will give a score of 9-10. We&rsquo;re working hard to make this happen!</p>
+<p class=" small-image" style="px"><img alt="Startup NPS score Vero" src="https://draftin.com:443/images/4592?token=1NEXlcYpMqfuelnN_W-qMqttZ7pFerwuQkcqwt9Z_nR7wNqYKB2db6Z7TU2QQnNaCuD4CGhXNVXJvn3sfdn_cCc"></p>
+<p>We also sent out our <a href="https://docs.google.com/forms/d/1a4HC0bF1nijsW50WXidlH8I0cV4kvgXzPhEesWFiRV0/viewform">Customer Happiness Survey Q4 2013</a> which was much more robust and asked all sorts of juicy questions. Most importantly, from a product perspective, were the questions &ldquo;How would you feel if you could no longer use Vero?&rdquo; and &ldquo;How could we improve Vero to better meet your needs?&rdquo;.</p>
+<p>Nearly 60% of customers said they&rsquo;d be <strong>very disappointed</strong> if Vero ceased to exist, and <strong>all</strong> of you said you&rsquo;d be <strong>somewhat disappointed</strong> at the very least. Combined with the responses we received for the second question it is clear that the product has the core functionality locked down and is helping you achieve results. The focus now is refining the features we&rsquo;ve got in order to make your life <strong>10 times easier</strong>. By Q1 2014 we hope that the response to that first question will be nearly 80%.</p>
+<p>No mean feat, but we&rsquo;ve been focusing a lot on product internally since the end of October and we&rsquo;re slowly making headway. There is so much to do and we&rsquo;re loving every minute of it.</p>
+<h2>Growth</h2>
+<p>Here&rsquo;s a chart of our growth over the year (revenue):</p>
+<p class=" small-image" style="px"><img alt="Startup Growth Curve" src="https://draftin.com:443/images/4591?token=aTxbrsNDNCWRhmmBnRZowygMSMsyB3CQrYvyqOTpD2wDjQbOD-xPfAdXNY90vVBdxddh8C2lHgsPMXOqGBqN490"></p>
+<p><em>I know, I know &ndash; where&rsquo;s the Y axis <img src="https://s.w.org/images/core/emoji/11/72x72/1f609.png" alt="😉" class="wp-smiley" style="height: 1em; max-height: 1em;" /></em></p>
+<p>Our fastest growth month-on-month this year was 40%. We consistently aim to grow 30% month-on-month and although we think this will slow a little as we get larger we believe we&rsquo;ll be able to keep growth at 20% or above (month-on-month).</p>
+<p>It&rsquo;s fair to say content has been a great marketing strategy for us. 80% of customers read at least one blog article before signing up to Vero and our blog has helped us build a <a href="http://saastr.com/2013/10/15/in-the-early-days-you-wont-have-enough-customers-but-the-mini-brand-will-come-to-the-rescue/">mini-brand</a>. Our goal with every post is to try and uncover something interesting or share some cold, hard data you can put into effect straight away. Data-driven marketing is the only kind of marketing and the Vero blog is doing well carving a niche for itself.</p>
+<p>Having said that, we know we can make the blog a lot better and we&rsquo;re working to do two things over the next few months:</p>
+<ol><li>Experiment with posts outside the realm of email marketing (like our post on <a>partnership hacks</a> and even this one), and</li>
+<li>Work with some guest writers, all going well.</li>
+</ol><p>We are excited about what we&rsquo;ve achieved and are keen to achieve 10 times as much in 2014.</p>
+<h2>Support</h2>
+<p>Support is <strong>huge</strong> for us.</p>
+<p>We&rsquo;ve always wanted to live up to the reputation of great companies like <a href="http://open.bufferapp.com/how-we-handled-a-10x-spike-in-support-volume-while-being-hacked-the-october-buffer-happiness-report/">Buffer</a> and <a href="http://mailgun.com">Mailgun</a> that set the bar when it comes to email support response times: sub-1 hour is the rule of thumb. This has been a big challenge, though a very rewarding one.</p>
+<p>We share support across the team. This takes time but it is extremely valuable as we don&rsquo;t lose sight of what is important and everyone, especially me, gets a chance to interact with you. We&rsquo;ve been experimenting with all sorts of ways to share the support load better and maintain quality responses and we&rsquo;re getting there &ndash; your input is always welcome.</p>
+<p>Despite our goal to keep response times super short they have suffered over the last two months as we&rsquo;ve been hard at work with scaling issues, the product and working better as a team.</p>
+<p>Our plan is to find someone to come on board as a customer success manager early in 2014, preferably in the EST timezone so we can have virtually global coverage, and work with me to lift the support bar to ridiculous new heights. With this in place we&rsquo;ll be able to get our response times back under the 1-2 hour threshold.</p>
+<h2>The Year Ahead</h2>
+<p>2014 is looking to be an exciting year. Now that we&rsquo;ve built a product that has the features you want, keeps you sending emails and is reliable, it&rsquo;s time to smooth out all of the remaining jitters and bugs and, as a team, transition to growth mode.</p>
+<p>This is a natural progression and means we can finally put in place so many of the great things we&rsquo;ve wanted to since day one to make Vero a truly great and useful product.</p>
+<p>In January we&rsquo;re bringing on a system administrator to help us improve our infrastructure every day. We&rsquo;ve made some great improvements recently leveraging ElasticSearch, Redis and better sharding of our application but there is so much more we can do to make Vero snappy. We&rsquo;re looking forward to this addition to the team.</p>
+<p>We&rsquo;re also <a href="/jobs">hiring for three more roles</a> over the coming 3-5 months. If you know someone who you think is suitable, let them know and send them to that page!</p>
+<p>I&rsquo;d love to hear your thoughts about the past year, what we could have done better and what you&rsquo;ve seen that has made you insanely happy working with us. If you ever feel like your voice isn&rsquo;t being heard make sure you <a href="mailto:chris@getvero.com">email me personally</a>.</p>
+<p>Once again, <strong>thank you</strong> to everyone who has been a part of the journey so far!</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/startup-first-year-growth/">2013 In Review: Thank You, 1300% Growth, A Product You Love And Support That Rocks</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/startup-first-year-growth/feed/</wfw:commentRss>
+		<slash:comments>36</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1192</post-id>	</item>
+		<item>
+		<title>Vero Partners With Moz.com To Help You Improve Your Marketing</title>
+		<link>https://www.getvero.com/resources/vero-partners-with-moz-com-to-help-you-improve-your-marketing/</link>
+		<comments>https://www.getvero.com/resources/vero-partners-with-moz-com-to-help-you-improve-your-marketing/#respond</comments>
+		<pubDate>Fri, 01 Nov 2013 10:23:57 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1120</guid>
+		<description><![CDATA[<p>We recently teamed up with the guys at Moz.com to bring you two great marketing tools with extra value. All...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/vero-partners-with-moz-com-to-help-you-improve-your-marketing/">Vero Partners With Moz.com To Help You Improve Your Marketing</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>We recently teamed up with the guys at Moz.com to bring you two great marketing tools with extra value.</p>
+<p><strong>All Vero subscribers can get a 60 day free trial of Moz</strong>. That&rsquo;s <em>double</em> the usual trial period, available any time if you <a href="http://moz.com/partners/vero">follow this link</a>.</p>
+<p>If you haven&rsquo;t heard of Moz, it&rsquo;s an SEO analytics package that does four things amazingly well:</p>
+<ol><li>It tracks all of your inbound channels in one place: search, social and their impact together.</li>
+<li>Visualization of what&rsquo;s important in your inbound strategy.</li>
+<li>Competitive insights by comparing you with your competitors.</li>
+<li>Actionable recommendations to actually make improvements.</li>
+</ol><p>We use Moz at Vero and it is the goods. Powerful at its core but actionable every time.</p>
+<p><a href="http://moz.com/partners/vero">Get your 60 day trial of Moz, absolutely free</a>.</p>
+<p>Better yet, Moz are also offering Vero to all of their Moz.com <a href="http://moz.com/community">Community Members</a> (it&rsquo;s free to signup) with a 45 day free trial.</p>
+<p>Check out the <a href="http://moz.com/perks">Moz perks page</a> to grab yourself an extended Vero trial while you&rsquo;re at it.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/vero-partners-with-moz-com-to-help-you-improve-your-marketing/">Vero Partners With Moz.com To Help You Improve Your Marketing</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/vero-partners-with-moz-com-to-help-you-improve-your-marketing/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1120</post-id>	</item>
+		<item>
+		<title>New Product Features: Introducing Email Newsletters and Segments</title>
+		<link>https://www.getvero.com/resources/emails-newsletters/</link>
+		<comments>https://www.getvero.com/resources/emails-newsletters/#comments</comments>
+		<pubDate>Tue, 22 Oct 2013 00:30:59 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+		<category><![CDATA[email newsletters]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1089</guid>
+		<description><![CDATA[<p>We&#8217;ve just released two great new features as part of our pricing update. Most exciting is the fact that you...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/emails-newsletters/">New Product Features: Introducing Email Newsletters and Segments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul><li>We&rsquo;ve just released two great new features as part of our pricing update.</li>
+<li>Most exciting is the fact that you can now send <em>Newsletters </em>(blast emails) in Vero, consolidating your email marketing and helping you work faster.</li>
+<li>Our new <em>Segments</em> feature allows you to <strong>name</strong> groups of filters, such as &lsquo;Paying customers&rsquo; or &lsquo;Loyal shoppers&rsquo;. You can use these segments to send newsletters or as filters for Vero&rsquo;s usual automated, trigger-based campaigns.</li>
+</ul><p>Let&rsquo;s dive into the new features and share how they&rsquo;ll help you <strong>improve your email marketing</strong>.</p>
+<p><span id="more-1089"></span></p>
+<h2>Newsletters</h2>
+<p>Sending emails that drive conversions is not just about sending automated campaigns: it&rsquo;s about testing as many ideas as possible and sending the right email at the right time.</p>
+<p>Vero&rsquo;s <em>Newsletters</em> feature gives you the power to send an email  to one or multiple segments of customers <em>right now</em> or at a <em>scheduled</em> point in the time in the future.</p>
+<p>Since launching the first release of this feature months ago we&rsquo;ve had individual customers sending tens of millions of emails per month: the feature has been a real hit.</p>
+<p>Some reasons you should jump into Vero&rsquo;s newsletters as opposed to keeping your traditional mail provider (MailChimp, AWeber, etc.):</p>
+<ul><li><strong>Simple targeting.</strong> You can email &ldquo;All users&rdquo; minus &ldquo;Paying Customers&rdquo; for example, without having to merge or export lists. Use the data you already have in Vero to send newsletters instantly.</li>
+<li><strong>Central management.</strong> Using one tool always makes life simpler. Managing templates and customer profiles in a single place is a massive boost for your productivity.</li>
+<li><strong>Save money.</strong> Using one tool will save you money, not to mention time that would otherwise be lost.</li>
+</ul><p><em>In the screenshot below you can see how easy it is to select the segments you want to email based on the data you&rsquo;re already tracking in Vero:</em></p>
+<p class=" small-image" style="px"><img alt="Email newsletters" src="https://draftin.com:443/images/2749?token=JkHfhMykF4DZSYYWhnwkC2AAiPCzG7QQooMyVr87D96mx716aiEnK77SBMIJJFVQftX84aM4rr1xLoGEvtRakn0"></p>
+<p>Our newsletters are available to all current and new customers on our <strong><a href="/#pricing">new plans</a>.</strong></p>
+<p>If you have questions about newsletters, check out the <a href="https://veropublic.wpengine.com/newsletters">Newsletters</a> menu item in your Vero account (<a href="/signup">sign up for a free trial</a> if you don&rsquo;t have one)</p>
+<h2>Segments</h2>
+<p>You can now save groups of filters as <em>Segments</em>. A segment is a dynamic list of customers. Common examples include &lsquo;Paying customers&rsquo;, &lsquo;Regular shoppers&rsquo;, &lsquo;Free trial users&rsquo;, &lsquo;European customers&rsquo; and so on. There are so many things you can do here.</p>
+<p>The beauty of segments is that you can see the number of people in an individual segment (a total count) as well as view a detailed list of these customers. Segments are always up to date, in realtime, so you don&rsquo;t have to add or remove people from a static list. It&rsquo;s all handled automatically.</p>
+<p>Once you have segments setup you can use them to send newsletters: combining or subtracting segments to target exactly who you want to.</p>
+<p><em>In the screenshot below you can see how easy it is to add filters and create a segment such as &lsquo;Paying customers&rsquo;. This segment will be consistently up to date and can be used to create automated campaigns and newsletters</em>.</p>
+<p class=" small-image" style="px"><img alt="Email marketing segmentation" src="https://draftin.com:443/images/2750?token=nHZr2IGpy9AiKcI3s72kt0vyEbIKLB-ZmhhINWwmFpvgmZjsh-pV78g262__l5lBEcPUd4n5R6JlN12le2eOSss"></p>
+<p>You can also use them as filters for event-triggered automated campaigns that you might have setup. For example you could create a campaign to s<em>end an email 14 days after a customer <span style="text-decoration: underline;">Signs up</span> if they are <span style="text-decoration: underline;">not in</span> the segment <span style="text-decoration: underline;">Paying Customers</span> </em>that reminds them their trial is about to end.</p>
+<p>Segments are only going to get bigger and better as we add more filters. The goal is to make managing your campaigns as simple as possible whilst giving you the power to report on a per-segment basis and better understand the impact of each campaign individual email you send.</p>
+<h2>Price increase</h2>
+<p>A couple of months ago we posted about <a href="http://blog.getvero.com/its-time-to-plan-a-pricing-change-wed-love-your-input/">increasing our pricing</a> in light of what we&rsquo;ve learnt over the last year running Vero.</p>
+<p>Last week we put live new pricing on our marketing site and things have been going well. Based on your feedback we came up with pricing that is:</p>
+<ul><li><strong>Still based on volume, not subscribers</strong>. There was resounding feedback that <em>per emails sent</em> was simpler to understand and easier to manage than <em>per subscribers in the database</em>. Rather than having to worry about how many &lsquo;active&rsquo; subscribers you have or whether you should add someone to your Vero database that you may only ever email once we&rsquo;ve gone with the approach of volume-based &lsquo;thresholds&rsquo; like other great SaaS companies such as Visual Website Optimizer, Unbounce and more.</li>
+<li><strong>More expensive than it was</strong>. Nearly everyone who provided feedback said the same thing: raise your prices! This was very encouraging to hear. Our prices have gone up but, compared to incumbents, competitors and the ROI, we still believe Vero is massive bang for your buck. The feedback so far has been the same.</li>
+</ul><p>If you&rsquo;re a current Vero customer then you are grandfathered into our <strong>current plans</strong> with the great tools you&rsquo;ve come to use every day (note that you can even upgrade and downgrade between the <em>current</em> plans). You won&rsquo;t experience any change in service in relation to the features of Vero you&rsquo;ve always loved and you&rsquo;ll get the same great support and product improvements you&rsquo;re used to.</p>
+<p>If you are a current customer and want to start using the new <em>Newsletters</em> and <em> Segments </em><em></em>features then upgrading to our <strong>new plans</strong> is a <a href="https://veropublic.wpengine.com/account/subscriptions">simple one-click upgrade</a>. By improving our pricing we are able to achieve three things:</p>
+<ol><li><strong>Better and faster support.</strong> We do pretty well already but imagine if we wrote back to you <em>twice</em> as fast!</li>
+<li><strong>An improved product that is faster and easier to work with.</strong> We want you to get in, get out and make more money with Vero as quickly as possible.</li>
+<li><strong>Reliability.</strong> Infrastructure can always be improved for speed and redundancy and we&rsquo;re constantly tweaking Vero as we grow.</li>
+</ol><p>We&rsquo;ve changed our prices to truly reflect the lessons we&rsquo;ve learned around costs and the value Vero provides. We look forward to making Vero even more awesome in the future!</p>
+<p>The full new prices are:</p>
+<ul><li>$99/month for up to 12,500 emails per month</li>
+<li>$149/month for 50,000 emails per month</li>
+<li>$299/month for 150,000 emails per month</li>
+<li>$549/month for 400,000 emails per month</li>
+<li>$1099/month for up to 1 million emails per month</li>
+<li>$1799/month for up to 2.5 million emails per month</li>
+<li>$2999/month for up to 6 million emails per month</li>
+</ul><p>So, ready to try out our new features? <a href="https://veropublic.wpengine.com/segments">Create a segment</a> or <a href="https://veropublic.wpengine.com/newsletters">write your first newsletter</a>.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/emails-newsletters/">New Product Features: Introducing Email Newsletters and Segments</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/emails-newsletters/feed/</wfw:commentRss>
+		<slash:comments>3</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1089</post-id>	</item>
+		<item>
+		<title>New Product Feature: Manage Your Own Email Signing</title>
+		<link>https://www.getvero.com/resources/email-domain-signing/</link>
+		<comments>https://www.getvero.com/resources/email-domain-signing/#respond</comments>
+		<pubDate>Mon, 14 Oct 2013 10:14:30 +0000</pubDate>
+		<dc:creator><![CDATA[Chris Hexton]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1079</guid>
+		<description><![CDATA[<p>Domain Signing is about linking your domain to your outgoing emails. When you sign up to Vero, by default your...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/email-domain-signing/">New Product Feature: Manage Your Own Email Signing</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><p>Domain Signing is about linking your domain to your outgoing emails.</p>
+<p>When you sign up to Vero, by default your emails will be sent from our shared domain and IP addresses. This is actually very positive for a number of reasons. Primarily, we send a <strong>lot</strong> more email than you so getting started and dealing with fluctuations is something you don&rsquo;t have to worry about, another few hundred thousands sends won&rsquo;t make a dent in our overall volume.</p>
+<p>One side-effect is that, by default, you&rsquo;ll also see this:</p>
+<p><span id="more-1079"></span></p>
+<p class=" small-image" style="px"><img alt="" src="https://draftin.com:443/images/2365?token=OxLo4AHHQJs9_0S5JTaOnXSN8dqFY-md-RAGIbAih7_FxmRQh2LfEZuER1lNLCk_f0iEa5xqwnO3zamA7gPpY6w"></p>
+<p>If you&rsquo;d rather things looked like this:</p>
+<p class=" small-image" style="px"><img alt="" src="https://draftin.com:443/images/2366?token=QM-sQGJAPnuXqc-IiscZnQk1EmHvFeJYp8Huhq6El357jbAujzPfChorlT6bTUHBuyJIImLVXg9Lq7FsZcHwBu4"></p>
+<p>&acirc;&#128;&brvbar;or you want to upgrade and use your own IPs (we&rsquo;ll tell you when we think this is appropriate, so feel free to ask) then you need to setup email authentication.</p>
+<h2>What is &lsquo;Email Authentication&rsquo; ?</h2>
+<p>The purpose of Email Authentication is to validate the identity of the sender of the email.</p>
+<p>The idea is to prove that your emails aren&rsquo;t forgeries by showing you own the domain.</p>
+<p>There are a few different <a href="http://en.wikipedia.org/wiki/Email_authentication#Authentication_methods">authentication types</a> and Vero supports three main methods:</p>
+<ol><li>Sender ID</li>
+<li>DKIM</li>
+<li>SPF</li>
+</ol><h2>Why should I do this?</h2>
+<p>As described above, by default your emails are signed by Vero.</p>
+<p>If you need your own series of IP addresses because you are a high volume or at risk customer then setting up authentication is a must.</p>
+<p>If you simply want to remove &lsquo;via getvero.com&rsquo; from your emails then that is alright too!</p>
+<h2>How to setup this authentication with Vero?</h2>
+<p>To date most customers who want authentication have asked for it and we&rsquo;ve set it up promptly.</p>
+<p>Moving forward you can now manage your own authentication via the <a href="https://veropublic.wpengine.com/account">Account</a> page.</p>
+<p>Simply visit the <a href="/account/mail_providers">Mail Provider</a> section, add your domain name (e.g. mydomain.com) and click on &ldquo;Request DNS records&rdquo;.</p>
+<p>A few seconds later you&rsquo;ll have the DNS records you need to verify your outgoing emails.</p>
+<p>After making the change to your server settings with these, just press &ldquo;Verify Records&rdquo; to ensure correctness.</p>
+<h2>That&rsquo;s it</h2>
+<p>What do you think of this new feature?</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/email-domain-signing/">New Product Feature: Manage Your Own Email Signing</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/email-domain-signing/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1079</post-id>	</item>
+		<item>
+		<title>New Product Feature: External Attributes</title>
+		<link>https://www.getvero.com/resources/new-product-feature-external-attributes/</link>
+		<comments>https://www.getvero.com/resources/new-product-feature-external-attributes/#comments</comments>
+		<pubDate>Thu, 26 Sep 2013 05:39:56 +0000</pubDate>
+		<dc:creator><![CDATA[dbrzoska]]></dc:creator>
+				<category><![CDATA[Product Updates]]></category>
+
+		<guid isPermaLink="false">http://blog.getvero.com/?p=1030</guid>
+		<description><![CDATA[<p>Today we released a new feature system-wide: external attributes External attributes allows you to merge in data from your own...</p>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/new-product-feature-external-attributes/">New Product Feature: External Attributes</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></description>
+				<content:encoded><![CDATA[<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><ul><li>Today we released a new feature system-wide: <em>external attributes</em></li>
+<li>External attributes allows you to merge in data from your own website when sending emails</li>
+<li>This feature is now publicly available (not in beta) to customers on our higher plans: email us to enable it</li>
+</ul><h2 id="what">What it&rsquo;s all about</h2>
+<p>The idea behind it is to let you integrate &ldquo;external&rdquo; content into your emails. This means pulling data from outside Vero into an outgoing email.</p>
+<p><span id="more-1030"></span><br>
+Currently, if you wanted to include a product recommendation section in an outgoing Vero email you&rsquo;d have to have supplied the data to Vero when you tracked a customer or their actions in the past. This works well but has two problems:</p>
+<ol><li>Products and their availability will change.</li>
+<li>You can&rsquo;t do your own complex filtering within Vero, you&rsquo;re limited to what Liquid provides.</li>
+</ol><h2 id="what">How to get started</h2>
+<p>If you had planned ahead and saved an array of the related products for a specific user, you would currently have a template that looks a little like this:</p>
+<p class=" small-image" style="px"><img alt="" src="/wp-content/uploads/2013/09/old-related-products.png"></p>
+<pre>{% for product in event.related_products %}
+ {{name}}: ${{price}}
+{% endfor %}</pre>
+<p>With our new external attributes feature enabled you could, instead, do something like this:</p>
+<p class=" small-image" style="px"><img alt="" src="/wp-content/uploads/2013/09/new-related-products.png"></p>
+<pre>{% fetch_html | "http://www.yourdomain.com?user={{user.email}}" %}</pre>
+<p>Before each email is sent we query this URL and dump the returned HTML <em>directly</em> into the outgoing campaign (don&rsquo;t worry, we cache where possible!). This means that you can run your own end-point and do all sorts of fancy if/else statements as required.</p>
+<h2>Get to it!</h2>
+<p>For the full details, check out the <a href="/help/designing-an-email/how-do-i-insert-merge-tags-using-liquid-in-my-emails/">brief Knowledge Base article</a>.</p>
+<p>Over the last six months we&rsquo;ve worked with a number of customers trying to solve advanced customization challenges and external attributes is the result. We look forward to seeing what customers dream up with this!</p>
+<p>This is the first of a number of updates we are currently working on.</p>
+<p>As ever, we&rsquo;d love to hear your feedback in order to make Vero the best targeted email tool out there so send an email to <a href="mailto:What's%20it%20all%20about?">damien@getvero.com</a> with any comments.</p></body></html>
+<p>The post <a rel="nofollow" href="https://www.getvero.com/resources/new-product-feature-external-attributes/">New Product Feature: External Attributes</a> appeared first on <a rel="nofollow" href="https://www.getvero.com">Vero</a>.</p>
+]]></content:encoded>
+			<wfw:commentRss>https://www.getvero.com/resources/new-product-feature-external-attributes/feed/</wfw:commentRss>
+		<slash:comments>39</slash:comments>
+	<post-id xmlns="com-wordpress:feed-additions:1">1030</post-id>	</item>
+	</channel>
+</rss>

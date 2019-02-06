@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from www.getvero.com/integrations/vero-snowplow/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:20:47 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head >
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vero and Snowplow integration</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v8.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="Connect Vero and Snowplow to send real-time email and push message interactions to your data warehouse. All your data in one place for smarter insights."/>
+<link rel="canonical" href="index.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Vero and Snowplow integration" />
+<meta property="og:description" content="Connect Vero and Snowplow to send real-time email and push message interactions to your data warehouse. All your data in one place for smarter insights." />
+<meta property="og:url" content="index.html" />
+<meta property="og:site_name" content="Vero" />
+<meta property="og:image" content="https://i1.wp.com/www.getvero.com/wp-content/uploads/2018/11/Vero-Snowplow@2x.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:secure_url" content="https://i1.wp.com/www.getvero.com/wp-content/uploads/2018/11/Vero-Snowplow@2x.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Vero and Snowplow" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="Connect Vero and Snowplow to send real-time email and push message interactions to your data warehouse. All your data in one place for smarter insights." />
+<meta name="twitter:title" content="Vero and Snowplow integration" />
+<meta name="twitter:image" content="https://i1.wp.com/www.getvero.com/wp-content/uploads/2018/11/Vero-Snowplow@2x.png?fit=1200%2C630&amp;ssl=1" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='http://s0.wp.com/' />
+<link rel='dns-prefetch' href='http://secure.gravatar.com/' />
+<link rel='dns-prefetch' href='http://fast.fonts.net/' />
+<link rel='dns-prefetch' href='http://cdnjs.cloudflare.com/' />
+<link rel='dns-prefetch' href='http://cdn.getvero.com/' />
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://cdn.rawgit.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Feed" href="../../feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Comments Feed" href="../../comments/feed/index.html" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.getvero.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='child-theme-css'  href='../../wp-content/themes/vero/style8036.css?ver=1527794841' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='../../wp-content/plugins/naked-social-share/assets/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css-css'  href='../../wp-content/plugins/wordpress-popular-posts/public/css/wpp8aee.css?ver=4.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='../../wp-includes/css/dashicons.min5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='highlight-css-css'  href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/tomorrow-night-bright.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-css'  href='../../wp-content/themes/vero/assets/stylesheets/prismc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-okaidia-css'  href='../../wp-content/themes/vero/assets/stylesheets/prism-okaidiac141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='imgslider-style-css'  href='../../wp-content/themes/vero/assets/stylesheets/imgslider-2.0.1-minc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-stylesheet-css'  href='https://cdn.getvero.com/app.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='googlefont_merriweather-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A700%2C700italic&amp;ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='bxslider-style-css'  href='../../wp-content/themes/vero/assets/stylesheets/jquery.bxslider5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-style-css'  href='http://cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-styles-css'  href='../../wp-content/plugins/jetpack/modules/widgets/social-icons/social-iconsf4df.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='../../wp-content/plugins/jetpack/css/jetpack8f99.css?ver=6.5' type='text/css' media='all' />
+<script type='text/javascript' src='../../wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='../../wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpp_params = {"sampling_active":"0","sampling_rate":"100","ajax_url":"https:\/\/www.getvero.com\/wp-json\/wordpress-popular-posts\/v1\/popular-posts\/","action":"update_views_ajax","ID":"7812","token":"87109256d6","debug":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/wordpress-popular-posts/public/js/wpp-4.1.0.min8aee.js?ver=4.1.2'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://www.getvero.com/wp-content/themes/genesis/lib/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/fout.js'></script>
+<script type='text/javascript' src='http://fast.fonts.net/jsapi/bd23cf03-685d-4ec1-b306-4adae883ab02.js'></script>
+<link rel='https://api.w.org/' href='../../wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="../../xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="../../wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://wp.me/P6YSXu-220' />
+<link rel="alternate" type="application/json+oembed" href="../../wp-json/oembed/1.0/embed5582.json?url=https%3A%2F%2Fwww.getvero.com%2Fintegrations%2Fvero-snowplow%2F" />
+<link rel="alternate" type="text/xml+oembed" href="../../wp-json/oembed/1.0/embed7bae?url=https%3A%2F%2Fwww.getvero.com%2Fintegrations%2Fvero-snowplow%2F&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'/>
+<link rel='dns-prefetch' href='http://i0.wp.com/'/>
+<link rel='dns-prefetch' href='http://i1.wp.com/'/>
+<link rel='dns-prefetch' href='http://i2.wp.com/'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="icon" href="../../wp-content/themes/vero/assets/images/home/favicon/64.png" />
+<link rel="pingback" href="../../xmlrpc.php" />
+<!-- Google Tag Manager -->
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-M8KWK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'http://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8KWK');</script>
+<!-- End Google Tag Manager -->  
+  <meta name="google-site-verification" content="AkIiiyFL03lKnauhmJxy0yvCx-iyt8zAvsjfzQVrakA" />
+  </head>
+  
+  <body class="page-template-default page page-id-7812 page-child parent-pageid-7697 header-full-width content-sidebar integration-page snowplow-integration" itemscope itemtype="https://schema.org/WebPage"><div class="site-container"><nav class="nav-primary" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement"><div class="wrap">  <ul id="menu-marketing-navbar-left" class="menu">
+    <li id="logo" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="../../index.html"><img data-no-retina src="../../wp-content/themes/vero/assets/images/home/logo/logo-blue.svg" width="104" height="36"></a></li>
+    <li><a href="../../careers/index.html" class="hiring-pill">We're Hiring!</a></li>
+  </ul>
+  <ul id="menu-marketing-navbar-right" class="menu genesis-nav-menu menu-primary"><li id="menu-item-7514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7514"><a title="Features" href="../../features/index.html" itemprop="url"><span itemprop="name">Features</span></a></li>
+<li id="menu-item-2169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2169"><a href="../../features/email/index.html" itemprop="url"><span itemprop="name">More</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-7751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7751"><a href="../../workflows/index.html" itemprop="url"><span itemprop="name">Workflows</span></a></li>
+	<li id="menu-item-7601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7601"><a href="../../event-manager/index.html" itemprop="url"><span itemprop="name">Event Management</span></a></li>
+	<li id="menu-item-7502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7502"><a href="../../fusion/index.html" itemprop="url"><span itemprop="name">Fusion</span></a></li>
+	<li id="menu-item-7480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7480"><a href="../../multi-language-campaigns/index.html" itemprop="url"><span itemprop="name">Multi-language Campaigns</span></a></li>
+	<li id="menu-item-7600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7600"><a href="../../reporting/index.html" itemprop="url"><span itemprop="name">Reporting</span></a></li>
+</ul>
+</li>
+<li id="menu-item-2026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2026"><a href="http://help.getvero.com/" itemprop="url"><span itemprop="name">Help</span></a></li>
+<li id="menu-item-2120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2120"><a href="../../resources/index.html" itemprop="url"><span itemprop="name">Blog</span></a></li>
+<li id="menu-item-2025" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2025"><a href="../../pricing.html" itemprop="url"><span itemprop="name">Pricing</span></a></li>
+<li id="menu-item-429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-429"><a href="http://axtrionproduction.space/app/" itemprop="url"><span itemprop="name">Log In</span></a></li>
+<li id="menu-item-2119" class="btn btn-success menu-item menu-item-type-custom menu-item-object-custom menu-item-2119"><a title="button" href="https://app.getvero.com/signup" itemprop="url"><span itemprop="name">Start a free trial</span></a></li>
+</ul>  <div class="nav-menu-toggle"><a href="#">Menu</a></div>
+  </div></nav><section id="vero-integration-heading">
+  <div class="inner small-inner center-text">
+    <h2 class="semi-bold smallish font-brand-gray no-top-margin bottom-margin-medium">Integrations</h2>
+
+    <div class="integration-logos bottom-margin-large">
+      <a class="logo-container vero" href="../../index.html">
+       <img src="../../wp-content/themes/vero/assets/images/integrations/vero-logo.png" srcset="/wp-content/themes/vero/assets/images/integrations/vero-logo@2x.png 2x"></a>
+      </>
+      <div class="plus">
+        <img src="../../wp-content/themes/vero/assets/images/integrations/plus.svg">
+      </div>
+      <a class="logo-container snowplow" href="https://snowplowanalytics.com/products/">
+        <img src="../../wp-content/themes/vero/assets/images/integrations/snowplow/snowplow-logo.png" srcset="/wp-content/themes/vero/assets/images/integrations/snowplow/snowplow-logo@2x.png 2x">
+      </a>
+    </div>
+
+    <h1 class="biggie semi-bold">Connect Vero and Snowplow</h1>
+
+    <p class="no-top-margin bottom-margin-large large">Seamlessly send all your email and push interaction data including deliveries, opens, clicks and unsubscribes from <strong>Vero</strong> to your data warehouse using <strong>Snowplow</strong>.</p>
+
+    <p class="no-top-margin faded">Create a Vero account and connect Snowplow in minutes</p>
+    <a href="https://app.getvero.com/signup" class="btn btn-success btn-large btn-wide">Get started</a>
+  </div>
+</section>
+<section class="double-padding gray-section">
+  <div class="inner small-inner center-text">
+    <h2 class="chunk regular bottom-margin-small">All your data and insights in one place</h2>
+    <p class="large no-top-margin bottom-margin-large">Snowplow delivers your data to your data warehouse. With all your data in one place, you can perform any analysis and ask any question of your data using your preferred analytics tool.</p>
+    <img class="responsive-image" src="../../wp-content/assets/images/integrations/snowplow/data-pipeline.html" srcset="/wp-content/themes/vero/assets/images/integrations/snowplow/data-pipeline@2x.png" alt="Data Pipeline">
+  </div>
+</section>
+<section>
+  <div class="inner medium-inner bottom-padding-small">
+    <div class="integration-platform-info">
+      <div class="left">
+        <h2 class="medium regular bottom-margin-tiny">What is Snowplow?</h2>
+        <p class="medium no-bottom-margin">Snowplow collects and processes data in batch or real-time configurations from multiple sources (including Vero, Stripe, and Zendesk) and loads your data into your data warehouse (such as Amazon Redshift or Snowflake).</p>
+      </div>
+      <div class="right">
+        <p class="pill pill-medium pill-primary"><a href="https://snowplowanalytics.com/products/" target="_blank">Website</a></p>
+        <p class="pill pill-medium pill-primary"><a href="https://help.getvero.com/articles/integrations/integrate-vero-and-snowplow.html" target="_blank">Documentation</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="features-more" class="border-bottom">
+  <div class="inner medium-inner">
+    <h2 class="chunk regular center-text bottom-margin-large">Why connect Vero and Snowplow</h2>
+    <ul class="feature-list left-align unstyled-list halfs">
+      <li>
+        <img class="right-margin-small" src="../../wp-content/themes/vero/assets/images/integrations/snowplow/custom-reports.svg">
+        <div class="right">
+          <h3 class="medium regular">Build custom reports</h3>
+          <p class="light">Send data via Snowplow to your data warehouse and create custom reports with popular charting and BI tools like <a href="https://modeanalytics.com/">Mode Analytics</a>, <a href="https://looker.com/">Looker</a> and <a href="https://www.periscopedata.com/">Periscope Data</a>.</p>
+        </div>
+      </li>
+      <li>
+        <img src="../../wp-content/themes/vero/assets/images/integrations/snowplow/better-insights.svg">
+        <div class="right">
+          <h3 class="medium regular">Gain better insights</h3>
+          <p class="light">Vero's <a href="../../reporting/index.html">campaign reporting</a> is powerful, but there are certain reports that can only be generated when you bring your data together.</p>
+        </div>
+      </li>
+      <li>
+        <img class="right-margin-small" src="../../wp-content/themes/vero/assets/images/integrations/snowplow/faster.svg">
+          <div class="right">
+            <h3 class="medium regular">Move faster</h3>
+            <p class="light">Writing middleware to capture webhooks and load data into your warehouse is complex and time-consuming. Snowplow handles the hard work for you.</p>
+          </div>
+      </li>
+      <li>
+        <img src="../../wp-content/themes/vero/assets/images/integrations/snowplow/backup.svg">
+        <div class="right">
+          <h3 class="medium regular">Backup important data</h3>
+          <p class="light">By warehousing the email interactions that originate in Vero you can backup and store a record of important customer interactions and insights.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+<section id="vero-segment-test-event" class="feature-section">
+  <div class="inner halfs medium-inner small-reverse">
+    <div class="left">
+      <h2 class="chunk regular bottom-margin-medium">Meaningful and actionable insights</h2>
+      <p class="medium no-top-margin bottom-margin-small">With Snowplow you can send data to Amazon Redshift or Snowflake data warehouses. Joining up your email and push interaction data with the rest of your customer data will give you access to meaningful and actionable insights.</p>
+      <p class="medium no-bottom-margin">For example, by combining your data from payment apps, like Stripe, with your data from Vero, you can analyze conversions and revenue from email campaigns.</p>
+    </div>
+    <div class="right">
+      <img src="../../wp-content/themes/vero/assets/images/integrations/snowplow/meaningful-actionable-insights.svg" class="pull-right responsive-image hide-on-medium">
+    </div>
+  </div>
+</section>
+<section id="call-to-action" class="center-text">
+  <div class="inner">
+    <h1 class="cta-title">Start building your best campaigns today</h1>
+    <p class="sub-heading">Create a Vero account and connect to Snowplow in minutes</p>
+    <a class="btn btn-success btn-large btn-wide" href="http://app.getvero.com/signup">Get started</a>
+  </div>
+</section>
+<footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter"><div class="wrap">  <div class="main-footer">
+      <ul class="col">
+    <li id="logo"><a href="../../index.html"><img src="../../wp-content/themes/vero/assets/images/home/logo/logo-white.svg" width="104"></a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Product</li>
+    <li><a href="../../features/index.html">Features</a></li>
+    <li><a href="../../workflows/index.html">Workflows</a></li>
+    <li><a href="../../event-manager/index.html">Event Management</a></li>
+    <li><a href="../../fusion/index.html">Fusion</a></li>
+    <li><a href="../../multi-language-campaigns/index.html">Multi-language</a></li>
+    <li><a href="../../reporting/index.html">Reporting</a></li>
+    <li><a href="../vero-segment/index.html">Vero &plus; Segment</a></li>
+    <li><a href="../vero-stitch/index.html">Vero &plus; Stitch</a></li>
+    <li><a href="index.html">Vero &plus; Snowplow</a></li>
+    <li><a href="../../pricing.html">Pricing</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Resources</li>
+    <!--<li>About</li>-->
+    <li><a href="../../resources/index.html" target="_blank">Blog</a></li>
+    <li ><a href="../../email-personalization-liquid-guide.html" target="_blank">Liquid Guide</a></li>
+    <li><a href="https://help.getvero.com/" target="_blank">Help Center</a></li>
+    <li><a href="https://developers.getvero.com/" target="_blank">API Reference</a></li>
+    <li><a href="https://releasenotes.getvero.com/" target="_blank">Release Notes</a></li>
+    <li><a href="https://status.getvero.com/" target="_blank">Status</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Company</li>
+    <li><a href="../../careers/index.html">Careers</a><a href="../../careers/index.html" class="hiring-pill left-margin-tiny">We're Hiring!</a></li>
+    <li><a href="../../terms-of-service/index.html">Terms of Service</a></li>
+    <li><a href="../../privacy/index.html">Privacy Policy</a></li>
+    <li><a href="../../gdpr/index.html">GDPR</a></li>
+    <li><a href="https://twitter.com/getvero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @getvero</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+  </ul>
+    </div>
+</div></footer></div><script data-cfasync="false">
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+      var logout_link = document.querySelectorAll('a[href*="wp-login.php?action=logout"]');
+      if (logout_link) {
+        for(var i=0; i < logout_link.length; i++) {
+          logout_link[i].addEventListener( "click", function() {
+            Intercom('shutdown');
+          });
+        }
+      }
+    }
+  };
+</script>
+<script data-cfasync="false">
+  window.intercomSettings = {"app_id":"i8y1wtxu"};
+</script>
+<script data-cfasync="false">(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/i8y1wtxu';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/_inc/build/photon/photon.minb3d9.js?ver=20130122'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"theveroblog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/disqus-comment-system/public/js/comment_count952b.js?ver=3.0.16'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201850'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var NSS = {"ajaxurl":"https:\/\/www.getvero.com\/wp-admin\/admin-ajax.php","disable_js":"","nonce":"4c170e1f4d"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/naked-social-share/assets/js/naked-social-share.min1159.js?ver=1.4.2'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Decaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='../../wp-content/plugins/jetpack/modules/wpgroho5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.waypoints.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/scripts.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/dev_message.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.bxslider.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/featherlight.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/picturefill.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.parallax-scroll.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/prism.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.cookie.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/jquery.leanModal.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/smooth-scroll.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/homepage.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/features.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/pricing.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/blog.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/vendor/imgslider.min.js'></script>
+<script type='text/javascript' src='../../wp-content/themes/vero/assets/scripts/landing-pages.js'></script>
+<script type='text/javascript' src='../../wp-includes/js/wp-embed.min5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201850.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.5',blog:'103168960',post:'7812',tz:'11',srv:'www.getvero.com'} ]);
+	_stq.push([ 'clickTrackerInit', '103168960', '7812' ]);
+</script>
+  </body>
+  
+<!-- Mirrored from www.getvero.com/integrations/vero-snowplow/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:21:00 GMT -->
+</html>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        dataLayer.push({
+          'contType': "ProductPage",
+          'event': 'postView'
+        });
+    </script>
+  
