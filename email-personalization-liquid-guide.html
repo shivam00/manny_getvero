@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+
+<!-- Mirrored from www.getvero.com/email-personalization-liquid-guide by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:21:00 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head >
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A guide to email personalization using Liquid | Vero</title>
+
+<!-- This site is optimized with the Yoast SEO plugin v8.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
+<meta name="description" content="You can use Liquid syntax in your HTML templates to personalize emails. This guide explains how Liquid works in emails and how to use it, including examples."/>
+<link rel="canonical" href="email-personalization-liquid-guide.html" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="A guide to email personalization using Liquid | Vero" />
+<meta property="og:description" content="You can use Liquid syntax in your HTML templates to personalize emails. This guide explains how Liquid works in emails and how to use it, including examples." />
+<meta property="og:url" content="email-personalization-liquid-guide.html" />
+<meta property="og:site_name" content="Vero" />
+<meta property="og:image" content="https://i0.wp.com/www.getvero.com/wp-content/uploads/2018/10/Liquid-OG-Messages@2x.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:secure_url" content="https://i0.wp.com/www.getvero.com/wp-content/uploads/2018/10/Liquid-OG-Messages@2x.png?fit=1200%2C630&amp;ssl=1" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Create personalized messages, faster" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:description" content="You can use Liquid syntax in your HTML templates to personalize emails. This guide explains how Liquid works in emails and how to use it, including examples." />
+<meta name="twitter:title" content="A guide to email personalization using Liquid | Vero" />
+<meta name="twitter:image" content="https://i0.wp.com/www.getvero.com/wp-content/uploads/2018/10/Liquid-OG-Messages@2x.png?fit=1200%2C630&amp;ssl=1" />
+<meta name="twitter:creator" content="@chexton" />
+<!-- / Yoast SEO plugin. -->
+
+<link rel='dns-prefetch' href='http://s0.wp.com/' />
+<link rel='dns-prefetch' href='http://secure.gravatar.com/' />
+<link rel='dns-prefetch' href='http://fast.fonts.net/' />
+<link rel='dns-prefetch' href='http://cdnjs.cloudflare.com/' />
+<link rel='dns-prefetch' href='http://cdn.getvero.com/' />
+<link rel='dns-prefetch' href='http://fonts.googleapis.com/' />
+<link rel='dns-prefetch' href='http://cdn.rawgit.com/' />
+<link rel='dns-prefetch' href='http://s.w.org/' />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Feed" href="feed/index.html" />
+<link rel="alternate" type="application/rss+xml" title="Vero &raquo; Comments Feed" href="comments/feed/index.html" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/11\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.getvero.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.8"}};
+			!function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55358,56760,9792,65039],[55358,56760,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='child-theme-css'  href='wp-content/themes/vero/style8036.css?ver=1527794841' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='wp-content/plugins/naked-social-share/assets/css/font-awesome.min1849.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='wordpress-popular-posts-css-css'  href='wp-content/plugins/wordpress-popular-posts/public/css/wpp8aee.css?ver=4.1.2' type='text/css' media='all' />
+<link rel='stylesheet' id='dashicons-css'  href='wp-includes/css/dashicons.min5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='highlight-css-css'  href='http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.8.0/styles/tomorrow-night-bright.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-css'  href='wp-content/themes/vero/assets/stylesheets/prismc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='prism-okaidia-css'  href='wp-content/themes/vero/assets/stylesheets/prism-okaidiac141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='imgslider-style-css'  href='wp-content/themes/vero/assets/stylesheets/imgslider-2.0.1-minc141.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='custom-stylesheet-css'  href='https://cdn.getvero.com/app.min.css?ver=2.6.1' type='text/css' media='all' />
+<link rel='stylesheet' id='googlefont_merriweather-css'  href='https://fonts.googleapis.com/css?family=Merriweather%3A700%2C700italic&amp;ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='bxslider-style-css'  href='wp-content/themes/vero/assets/stylesheets/jquery.bxslider5010.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='featherlight-style-css'  href='http://cdn.rawgit.com/noelboss/featherlight/1.7.0/release/featherlight.min.css?ver=4.9.8' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack-widget-social-icons-styles-css'  href='wp-content/plugins/jetpack/modules/widgets/social-icons/social-iconsf4df.css?ver=20170506' type='text/css' media='all' />
+<link rel='stylesheet' id='jetpack_css-css'  href='wp-content/plugins/jetpack/css/jetpack8f99.css?ver=6.5' type='text/css' media='all' />
+<script type='text/javascript' src='wp-includes/js/jquery/jqueryb8ff.js?ver=1.12.4'></script>
+<script type='text/javascript' src='wp-includes/js/jquery/jquery-migrate.min330a.js?ver=1.4.1'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var wpp_params = {"sampling_active":"0","sampling_rate":"100","ajax_url":"https:\/\/www.getvero.com\/wp-json\/wordpress-popular-posts\/v1\/popular-posts\/","action":"update_views_ajax","ID":"7711","token":"87109256d6","debug":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/wordpress-popular-posts/public/js/wpp-4.1.0.min8aee.js?ver=4.1.2'></script>
+<!--[if lt IE 9]>
+<script type='text/javascript' src='https://www.getvero.com/wp-content/themes/genesis/lib/js/html5shiv.min.js?ver=3.7.3'></script>
+<![endif]-->
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/fout.js'></script>
+<script type='text/javascript' src='http://fast.fonts.net/jsapi/bd23cf03-685d-4ec1-b306-4adae883ab02.js'></script>
+<link rel='https://api.w.org/' href='wp-json/index.html' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="xmlrpc0db0.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="wp-includes/wlwmanifest.xml" /> 
+<link rel='shortlink' href='https://wp.me/P6YSXu-20n' />
+<link rel="alternate" type="application/json+oembed" href="wp-json/oembed/1.0/embeda70c.json?url=https%3A%2F%2Fwww.getvero.com%2Femail-personalization-liquid-guide" />
+<link rel="alternate" type="text/xml+oembed" href="wp-json/oembed/1.0/embed254e?url=https%3A%2F%2Fwww.getvero.com%2Femail-personalization-liquid-guide&amp;format=xml" />
+
+<link rel='dns-prefetch' href='http://v0.wordpress.com/'/>
+<link rel='dns-prefetch' href='http://i0.wp.com/'/>
+<link rel='dns-prefetch' href='http://i1.wp.com/'/>
+<link rel='dns-prefetch' href='http://i2.wp.com/'/>
+<style type='text/css'>img#wpstats{display:none}</style><link rel="icon" href="wp-content/themes/vero/assets/images/home/favicon/64.png" />
+<link rel="pingback" href="xmlrpc.php" />
+<!-- Google Tag Manager -->
+<noscript><iframe src="http://www.googletagmanager.com/ns.html?id=GTM-M8KWK"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'http://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-M8KWK');</script>
+<!-- End Google Tag Manager --></head>
+<body class="page-template page-template-single-plain-sidebar-hero page-template-single-plain-sidebar-hero-php page page-id-7711 header-full-width sidebar-content left-menu plain-template" itemscope itemtype="https://schema.org/WebPage"><div class="site-container"><nav class="nav-primary" aria-label="Main" itemscope itemtype="https://schema.org/SiteNavigationElement"><div class="wrap">  <ul id="menu-marketing-navbar-left" class="menu">
+    <li id="logo" class="menu-item menu-item-type-custom menu-item-object-custom"><a href="index.html"><img data-no-retina src="wp-content/themes/vero/assets/images/home/logo/logo-blue.svg" width="104" height="36"></a></li>
+    <li><a href="careers/index.html" class="hiring-pill">We're Hiring!</a></li>
+  </ul>
+  <ul id="menu-marketing-navbar-right" class="menu genesis-nav-menu menu-primary"><li id="menu-item-7514" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7514"><a title="Features" href="features/index.html" itemprop="url"><span itemprop="name">Features</span></a></li>
+<li id="menu-item-2169" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-2169"><a href="features/email/index.html" itemprop="url"><span itemprop="name">More</span></a>
+<ul class="sub-menu">
+	<li id="menu-item-7751" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7751"><a href="workflows/index.html" itemprop="url"><span itemprop="name">Workflows</span></a></li>
+	<li id="menu-item-7601" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7601"><a href="event-manager/index.html" itemprop="url"><span itemprop="name">Event Management</span></a></li>
+	<li id="menu-item-7502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7502"><a href="fusion/index.html" itemprop="url"><span itemprop="name">Fusion</span></a></li>
+	<li id="menu-item-7480" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7480"><a href="multi-language-campaigns/index.html" itemprop="url"><span itemprop="name">Multi-language Campaigns</span></a></li>
+	<li id="menu-item-7600" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7600"><a href="reporting/index.html" itemprop="url"><span itemprop="name">Reporting</span></a></li>
+</ul>
+</li>
+<li id="menu-item-2026" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2026"><a href="http://help.getvero.com/" itemprop="url"><span itemprop="name">Help</span></a></li>
+<li id="menu-item-2120" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2120"><a href="resources/index.html" itemprop="url"><span itemprop="name">Blog</span></a></li>
+<li id="menu-item-2025" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-2025"><a href="pricing.html" itemprop="url"><span itemprop="name">Pricing</span></a></li>
+<li id="menu-item-429" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-429"><a href="https://app.getvero.com/login" itemprop="url"><span itemprop="name">Log In</span></a></li>
+<li id="menu-item-2119" class="btn btn-success menu-item menu-item-type-custom menu-item-object-custom menu-item-2119"><a title="button" href="https://app.getvero.com/signup" itemprop="url"><span itemprop="name">Start a free trial</span></a></li>
+</ul>  <div class="nav-menu-toggle"><a href="#">Menu</a></div>
+  </div></nav><div class="hero" style="backgorund-color:#ffffff; background-image: url(https://i1.wp.com/www.getvero.com/wp-content/uploads/2018/10/Liquid-Hero-Messages@2x.png?fit=3200%2C1010&amp;ssl=1);"></div><div class="site-inner"><div class="content-sidebar-wrap relative"><main class="content content-liquid"><article class="post-7711 page type-page status-publish has-post-thumbnail entry" itemscope itemtype="https://schema.org/CreativeWork"><header class="entry-header"><h1 class="entry-title" itemprop="headline">A guide to personalizing emails and push messages using Liquid</h1>
+  <div class='shares-block'>
+    		<div class="naked-social-share nss-update-share-numbers" data-post-id="7711">
+			<ul>
+																				<li class="nss-twitter">
+								<a href="http://www.twitter.com/intent/tweet?url=https%3A%2F%2Fwww.getvero.com%2Femail-personalization-liquid-guide&amp;via=getvero&amp;text=A+guide+to+personalizing+emails+and+push+messages+using+Liquid" target="_blank">
+									<i class="fa fa-twitter"></i>									<span class="nss-site-name">Twitter</span>
+																	</a>
+							</li>
+																			<li class="nss-facebook">
+								<a href="http://www.facebook.com/sharer/sharer.php?u=https://www.getvero.com/email-personalization-liquid-guide&amp;t=A+guide+to+personalizing+emails+and+push+messages+using+Liquid" target="_blank">
+									<i class="fa fa-facebook"></i>									<span class="nss-site-name">Facebook</span>
+																	</a>
+							</li>
+																			<li class="nss-linkedin">
+								<a href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fwww.getvero.com%2Femail-personalization-liquid-guide&amp;title=A+guide+to+personalizing+emails+and+push+messages+using+Liquid&amp;source=Vero" target="_blank">
+									<i class="fa fa-linkedin"></i>									<span class="nss-site-name">LinkedIn</span>
+																	</a>
+							</li>
+														</ul>
+		</div>
+		  </div>
+  </header><div class="entry-content" itemprop="text"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
+<html><body><h2 id="why-liquid" class="chunk">What is Liquid?</h2>
+<p>Liquid is an open-source language, created by Shopify, that enables dynamic content to be displayed on websites, emails and push messages (<em>where the service provider supports Liquid</em>). It offers a huge amount of flexibility to customize your messages, and it can often save you from syncing additional data to your email platform &ndash; allowing you to create more engaging and relevant content, faster.</p>
+<p>This guide explains how Liquid works and provides a summary of the most commonly used Liquid tags and filters for email and push messages, with examples of how to use them. You can also find a list of Vero-specific Liquid shortcodes that make personalizing email and push messages that bit easier.</p>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>The static elements of an email are written in HTML (for push messages it&rsquo;s written in JSON), and the dynamic elements are written in Liquid. The Liquid elements act as placeholders: just before the message is sent to the recipient, the Liquid is replaced and interpreted using the data tracked in your email platform, such as <a href="index.html">Vero</a>.</p>
+<p><em>When using Liquid, you should always review the output using the preview and test features in your email platform before activating your campaign.</em></p>
+<hr><h2 id="objects" class="chunk">Objects</h2>
+<p>Objects tell Liquid the location of the data that you want to load in the content of your email or push message.</p>
+<p>For example, the two main objects in Vero are:</p>
+<ul><li><code>user.</code> &ndash; indicates the data stored in the customer profile.</li>
+<li><code>event.</code> &ndash; indicates the data is stored against an event the user has triggered.</li>
+</ul><p>Objects are followed by the variable name, and are denoted by <strong>double curly braces</strong>: <code>{{ object.variable }}</code>. For example:</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>{{ <strong class="primary">user</strong>.first_name }}
+</td>
+<td>Jack</td>
+</tr><tr><td>{{ <strong class="primary">event</strong>.purchased_item }}
+</td>
+<td>trainers</td>
+</tr><tr><td>{{ <strong class="primary">event</strong>.subscription_plan }}
+</td>
+<td>annual</td>
+</tr></tbody></table><p>With Vero, you can also create custom objects that <a href="fusion/index.html">pull data from your internal or third-party APIs</a>.</p>
+<hr><h2 id="tags" class="chunk">Tags</h2>
+<p>Tags create the logic and conditions for the content you want to load in your email.  They are denoted by <strong>curly braces and percent signs</strong>: <code>{%</code> and <code>%}</code> . Tags and the markup inside them are not visible to the email recipient.</p>
+<p>Below are a few of the most commonly used tags in email templates.</p>
+<h3 id="if">if</h3>
+<p>Translates the Liquid code and displays in the email <strong>if a certain condition is true</strong>.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{user.account_status}}
+</td>
+<td>customer</td>
+</tr><tr><td>
+{% <strong class="primary">if</strong> <strong class="secondary">user.account_status == &lsquo;customer&rsquo;</strong> %}<br>
+Log in to your account<br>
+{% <strong class="primary">endif</strong> %}
+</td>
+<td>Log in to your account</td>
+</tr></tbody></table><p></p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.account_status }}
+</td>
+<td>trial</td>
+</tr><tr><td>
+{% <strong class="primary">if</strong> <strong class="secondary">user.account_status == &lsquo;trial&rsquo;</strong> %}<br>
+Watch the video<br>
+{% <strong class="primary">endif</strong> %}
+</td>
+<td>Watch the video</td>
+</tr></tbody></table><h3 id="unless">unless</h3>
+<p>Translates the Liquid code and displays in the email if a certain condition <strong>is not true</strong> (the opposite of &lsquo;if&rsquo;).</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.first_name }}<br>
+{{ user.account_status }}
+</td>
+<td>James<br>
+customer</td></tr><tr><td>
+Hi {{ user.first_name }},<br>
+{% <strong class="primary">unless</strong> <strong class="secondary">user.account_status == &lsquo;cancelled&rsquo;</strong> %}<br>
+  Log into your account<br>
+{% <strong class="primary">endunless</strong> %}
+</td>
+<td>Hi James,<br>
+Log into your account</td></tr></tbody></table><p></p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.first_name }}<br>
+{{ user.account_status }}
+</td>
+<td>Zach<br>
+cancelled</td></tr><tr><td>
+Hi {{ user.first_name }},<br>
+{% <strong class="primary">unless</strong> <strong class="secondary">user.account_status == &lsquo;cancelled&rsquo;</strong> %}<br>
+  Log into your account<br>
+{% <strong class="primary">endunless</strong> %}
+</td>
+<td>Hi Zach,<br></td></tr></tbody></table><h3 id="elsif-else">elsif/else</h3>
+<p>Allows inclusion of multiple conditions within an <code>if</code> or <code>unless</code> statement.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{event.discount_amount}}
+</td>
+<td>20.00
+</td>
+</tr><tr><td>
+{% <strong class="primary">if</strong> <strong class="secondary">event.discount_amount == &ldquo;15.00&rdquo; %}</strong><br>
+  Get $15 off your next order!<br>
+{% <strong class="primary">elsif</strong> <strong class="secondary">event.discount_amount == &ldquo;20.00&rdquo; %}</strong><br>
+  Get $20 off your next order!<br>
+{% <strong class="primary">else</strong> %}<br>
+  Recommend a friend and get $10 off your next order.<br>
+{% <strong class="primary">endif</strong> %}
+</td>
+<td>Get $20 off your next order!
+</td>
+</tr></tbody></table><h2 id="operators" class="chunk">Operators</h2>
+<p><strong>Comparison operators</strong> can be used with <code>if</code>,<code>elsif</code>, <code>else</code> and <code>unless</code> tags; they don&rsquo;t work anywhere else in Liquid.</p>
+<table><tbody><tr><td> == </td>
+<td>equals</td></tr><tr><td> != </td>
+<td>does not equal</td></tr><tr><td> &gt; </td>
+<td>greater than</td></tr><tr><td> &lt; </td>
+<td>less than</td></tr><tr><td> &gt;= </td>
+<td>greater than or equal to</td></tr><tr><td> &lt;= </td>
+<td>less than or equal to</td></tr></tbody></table><p><strong>Boolean operators</strong>:</p>
+<table><tbody><tr><td>or</td>
+
+</tr><tr><td>and</td>
+
+</tr></tbody></table><hr><h2 id="filters" class="chunk">Filters</h2>
+<p>Filters can be used to change the output value or format of a Liquid object. Below are some of the Liquid filters that are most commonly used in email templates.</p>
+<h3 id="append">append</h3>
+<p>Joins two strings together and returns the value. For example:</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 15 | <strong class="primary">append</strong>: <strong class="secondary">&lsquo;%&rsquo;</strong> }}
+</td>
+<td>15%</td>
+</tr><tr><td>
+{{ event.discount_amount | <strong class="primary">append</strong>: <strong class="secondary">&lsquo;%&rsquo;</strong> }}
+</td>
+<td>15%</td>
+</tr></tbody></table><h3 id="date">date</h3>
+<p>Converts a unix <a href="https://www.unixtimestamp.com/">timestamp</a> into another date format. The format for this syntax is the same as <a href="http://strftime.net/">strftime</a>.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.collection_date }}
+</td>
+<td>1544268600</td>
+</tr><tr><td>
+{{ event.collection_date | <strong class="primary">date</strong>: <strong class="secondary">&ldquo;%e %B %Y&rdquo;</strong> }}
+</td>
+<td>12 August 2018</td>
+</tr><tr><td>
+{{ event.collection_date | <strong class="primary">date</strong>: <strong class="secondary">&ldquo;%A %e %B&rdquo;</strong> }}
+</td>
+<td>Sunday 12 August</td>
+</tr><tr><td>
+{{ event.collection_date | <strong class="primary">date</strong>: <strong class="secondary">&ldquo;%D&rdquo;</strong> }}
+</td>
+<td>12/08/2018</td>
+</tr><tr><td>
+{{ event.collection_date | <strong class="primary">date</strong>: <strong class="secondary">&ldquo;%v&rdquo;</strong> }}
+</td>
+<td>12-Aug-2018</td>
+</tr></tbody></table><p><strong>Note</strong>: Unix time is UTC, see sections <a href="#current-time">current date/ time</a> and <a vero-specific liquid for href="#timezones">timezones</a> to learn how to display the date and time for a different timezone.</p>
+<h3 id="divided_by">divided_by</h3>
+<p>Divides a number by the number you specify. The value returned is rounded down to the nearest integer, if the divisor is an integer.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 15 | <strong class="primary">divided_by</strong>: <strong class="secondary">3</strong> }}
+</td>
+<td>5</td>
+</tr></tbody></table><h3 id="downcase">downcase</h3>
+<p>Reformats the string as all lowercase letters.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.viewed_product }}
+</td>
+<td>Dusky Pink Trainers</td>
+</tr><tr><td>
+{{ event.viewed_product | <strong class="primary">downcase</strong> }}
+</td>
+<td>dusky pink trainers</td>
+</tr></tbody></table><h3 id="first">first</h3>
+<p>Displays the first character or item in a string.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.full_name }}
+</td>
+<td>Sarah Jones</td>
+</tr><tr><td>
+{{ user.full_name | <strong class="primary">first</strong> }}
+</td>
+<td>S</td>
+</tr></tbody></table><p>You can also include a <strong>split</strong> filter to display part of the string.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ &ldquo;Alice, Sarah, Zach&rdquo; | <strong class="primary">split</strong>: <strong class="secondary">&ldquo;, &nbsp;&ldquo;</strong> | <strong class="primary">first</strong>}}
+</td>
+<td>Alice</td>
+</tr></tbody></table><h3 id="minus">minus</h3>
+<p>Subtracts a number from another number.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 10 | <strong class="primary">minus</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>8</td>
+</tr><tr><td>
+{{ 180.333 | <strong class="primary">minus</strong>: <strong class="secondary">8</strong> }}
+</td>
+<td>172.333</td>
+</tr></tbody></table><p>
+You can also include the <strong>round</strong> filter to round the output to the nearest integer, or specifiy the number of decimal places you want to round to.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 180.333 | minus: 8 | <strong class="primary">round</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>172.33</td>
+</tr><tr><td>
+{{ 180 | minus: 5.50 | <strong class="primary">round</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>174.5</td>
+</tr></tbody></table><p>
+<strong>N.B.</strong> Trailing zeros are not displayed when using these standard Liquid maths filters. With Vero, you can use the custom Liquid filter, <a href="#precision">precision</a> to display trailing zeros &ndash; for when you want to calculate and display prices/ currency formats in your emails.</p>
+<h3 id="modulo">modulo</h3>
+<p>Returns the remainder value after the division of one number by another.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 5 | <strong class="primary">modulo</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>1</td>
+</tr><tr><td>
+{{ 180.57 | <strong class="primary">modulo</strong>: <strong class="secondary">4</strong> }}
+</td>
+<td>0.57</td>
+</tr></tbody></table><h3 id="plus">plus</h3>
+<p>Adds a number to another number.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 4 | <strong class="primary">plus</strong>: <strong class="secondary">6 }}
+</strong></td>
+<td>10</td>
+</tr><tr><td>
+{{ 163.539 | <strong class="primary">plus:</strong> <strong class="secondary">8</strong> }}
+</td>
+<td>171.539</td>
+</tr></tbody></table><h3 id="prepend">prepend</h3>
+<p>Attaches a specified string to the beginning of a string.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.product_price }}
+</td>
+<td>42.95</td>
+</tr><tr><td>
+{{ event.product_price | <strong class="primary">prepend</strong>: <strong class="secondary">&lsquo;$&rsquo;</strong> }}
+</td>
+<td>$42.95</td>
+</tr><tr><td>
+{{ event.product_price | <strong class="primary">prepend</strong>: <strong class="secondary">&lsquo;&pound;&rsquo;</strong> }}
+</td>
+<td>&pound;42.95</td>
+</tr></tbody></table><h3 id="replace">replace</h3>
+<p>Replaces every occurrence of a specified substring with another, within a string.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.subscription_plan }}
+</td>
+<td>Gold subscription</td>
+</tr><tr><td>
+{{ user.subscription_plan | <strong class="primary">replace</strong>: <strong class="secondary">&ldquo;subscription&rdquo;, &ldquo;plan&rdquo;</strong> }}
+</td>
+<td>Gold plan</td>
+</tr></tbody></table><h3 id="remove">remove</h3>
+<p>Removes every occurrence of a specified substring within a string.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.order_number }}
+</td>
+<td>00012336</td>
+</tr><tr><td>
+{{ event.order_number | <strong class="primary">remove</strong>: <strong class="secondary">&lsquo;000&rsquo;</strong> }}
+</td>
+<td>12336</td>
+</tr></tbody></table><h3 id="times">times</h3>
+<p>Multiplies one number with another number and returns the value.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ 5.95 | <strong class="primary">times</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>11.9</td>
+</tr><tr><td>
+{{ 5.95 | <strong class="primary">times</strong>: <strong class="secondary">3</strong> }}
+</td>
+<td>17.85</td>
+</tr></tbody></table><h3 id="upcase">upcase</h3>
+<p>Changes the string to all uppercase letters</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.subscription_plan }}
+</td>
+<td>Gold subscription</td>
+</tr><tr><td>
+{{ user.subscription_plan | <strong class="primary">split:</strong> <strong class="secondary">&rdquo; &ldquo;</strong> | <strong class="primary">first</strong> | <strong class="primary">upcase</strong> }}
+</td>
+<td>GOLD</td>
+</tr></tbody></table><hr><h2 id="vero-specific" class="chunk">Vero-specific Liquid code</h2>
+<p>We&rsquo;ve extended the standard Liquid functionality with a series of custom functions that make it even quicker and easier to personalize your emails. The following custom Liquid objects and filters can be used in <a href="index.html">Vero</a>:</p>
+<h3 id="fallback">fallback</h3>
+<p>Allows you to add a default value, should a value not exist. The default value will be displayed where the value on the left is empty.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ user.firstname }}
+</td>
+<td></td>
+</tr><tr><td>
+Hi {{ user.firstname | <strong class="primary">fallback</strong>: <strong class="secondary">&lsquo;there&rsquo;</strong> }},
+</td>
+<td>Hi there,</td>
+</tr></tbody></table><h3 id="precision">precision</h3>
+<p>Rounds the output to a specified number of decimal places, observing trailing zeros. This is helpful when using Liquid maths filters in your email, for example where you want to display a price/ currency format.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.item_price }}
+</td>
+<td>72.50</td>
+</tr><tr><td>
+Total: ${{ event.item_price | <strong>minus</strong>: 8 }}
+</td>
+<td>Total: $75.5</td>
+</tr><tr><td>
+Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</strong>: <strong class="secondary">2</strong> }}
+</td>
+<td>Total: $75.50</td>
+</tr></tbody></table><h3 id="current-time">Current date/time</h3>
+<p><code>extra.time.now</code> returns the current datetime as a <a href="https://www.epochconverter.com/">Unix time</a>.<br><br>The <a href="https://www.epochconverter.com/">Unix epoch</a> (or <em>Unix time</em> or <em>POSIX time</em> or <em>Unix timestamp</em>) is the number of seconds that have elapsed since January 1, 1970.</p>
+<p>You can transform this value into a readable date using the standard Liquid <a href="#date">date</a> filter. <strong>The datetime is calculated at the point in time at which the email sent.</strong></p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+<strong class="primary">{{ extra.time.now }}</strong>
+</td>
+<td>1564489806</td>
+</tr><tr><td>
+{{ extra.time.now | date: <strong class="secondary">&ldquo;%A %e %B&rdquo;</strong> }}
+</td>
+<td>Tuesday 30 July</td>
+</tr><tr><td>
+{{ extra.time.now | date: <strong class="secondary">&ldquo;%v&rdquo;</strong> }}
+</td>
+<td>30-Jul-2019</td>
+</tr></tbody></table><p>There is only one Unix time and it is created by using the <strong>UTC/GMT time zone</strong>.</p>
+<p>If you want to display the exact date and time for a different timezone, you can use <a href="#plus">plus</a> or <a href="#minus">minus</a> to offset in seconds UTC time. You can find a list of timezones and the seconds to which you need to offset, <a href="https://www.epochconverter.com/timezones">here</a>.<br></p>
+<p>For example, if you wanted the email to display the current date and time in Sydney (AEST) you would add <strong>36000 seconds, which is UTC +10:00</strong>.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ extra.time.now | date: &ldquo;%A %e %B, %R&rdquo;  }}
+</td>
+<td>Wednesday 1 August, 23:30 </td>
+</tr><tr><td>
+{{ extra.time.now | <strong class="primary">plus:</strong> <strong class="secondary">36000</strong> | date: &ldquo;%A %e %B, %R&rdquo;  }}
+</td>
+<td>Thursday 2 August, 09:30 </td>
+</tr></tbody></table><p>Remember, <code>extra.time.now</code> is calculated as the point in time the email is sent.</p>
+<h3 id="future-date">future date</h3>
+<p>You can also use <code>extra.time.now</code> to display a future date, based on the time the recipient is sent a behavioural email. You can add time to the current date by using epoch time, which converts as follows:</p>
+<table class="code"><thead><tr><th>Time period</th>
+<th>seconds</th>
+</tr></thead><tbody><tr><td>1 hour</td>
+<td><strong class="secondary">3600</strong></td>
+</tr><tr><td>1 day</td>
+<td><strong class="secondary">86400</strong></td>
+</tr><tr><td>1 week</td>
+<td><strong class="secondary">604800</strong></td>
+</tr><tr><td>1 month (30.44 days)</td>
+<td><strong class="secondary">2629743</strong></td>
+</tr><tr><td>1 year (365.24 days)</td>
+<td><strong class="secondary">31556926</strong></td>
+</tr></tbody></table><p>For example, if the email was sent on <strong>Tuesday 30 July</strong> and you wanted your offer to expire in 7 days:</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+20% off until {{ <strong class="primary">extra.time.now</strong> | plus: <strong class="secondary">604800</strong> | date: &ldquo;%A %e %B&rdquo; }}
+</td>
+<td>20% off until Tuesday 6 August</td>
+</tr></tbody></table><h3 id="timezones">timezones</h3>
+<p>If you track a property following the <a href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601 format</a>, you can use <code>time_zone</code> to convert UTC/GMT to your specified time zone.</p>
+<table class="full-width code"><thead><tr><th>Input</th>
+<th>Output</th>
+</tr></thead><tbody><tr><td>
+{{ event.purchase_date }}
+</td>
+<td>2017-10-08T04:46:10Z</td>
+</tr><tr><td>
+{{ event.purchase_date | date: &ldquo;%A %e %b, %R&rdquo; }}
+</td>
+<td>Sunday 8 Oct, 04:46 </td>
+</tr><tr><td>
+{{ event.purchase_date | <strong class="primary">time_zone:</strong> <strong class="secondary">&lsquo;Sydney&rsquo;</strong> | date: &ldquo;%A %e %b, %R&rdquo; }}
+</td>
+<td>Sunday 8 Oct, 15:46 </td>
+</tr><tr><td>
+{{ event.purchase_date | <strong class="primary">time_zone:</strong> <strong class="secondary">5</strong> | date: &ldquo;%A %e %b, %R&rdquo; }}
+</td>
+<td>Sunday 8 Oct, 09:46 </td>
+</tr><tr><td>
+{{ event.purchase_date | <strong class="primary">time_zone:</strong> <strong class="secondary">-7</strong> | date: &ldquo;%A %e %b, %R&rdquo; }}
+</td>
+<td>Saturday 7 Oct, 21:46 </td>
+</tr></tbody></table><p>
+<strong>Important</strong>: Before launching your email campaign, always double check your Liquid code using Vero&rsquo;s preview and test features.</p></body>
+<!-- Mirrored from www.getvero.com/email-personalization-liquid-guide by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:21:02 GMT -->
+</html>
+</div></article></main><aside class="sidebar sidebar-primary widget-area sidebar-sticky sidebar-gradient" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="https://schema.org/WPSideBar"><ul class="menu menu-sticky">
+<li><strong><a href="#why-liquid">What is Liquid?</a></strong>
+<ul>
+<li><a href="#how-does-it-work">How does it work?</a></li>
+</ul>
+</li>
+<li><strong><a href="#objects">Objects</a></strong></li>
+<li><strong><a href="#tags">Tags</a></strong>
+<ul>
+<li><a href="#if">if</a></li>
+<li><a href="#unless">unless</a></li>
+<li><a href="#elsif-else">elsif/else</a></li>
+</ul>
+</li>
+<li><a href="#operators"><strong>Operators</strong></a></li>
+<li><strong><a href="#filters">Filters</a></strong>
+<ul>
+<li><a href="#append">append</a></li>
+<li><a href="#date">date</a></li>
+<li><a href="#divided_by">divided_by</a></li>
+<li><a href="#downcase">downcase</a></li>
+<li><a href="#first">first</a></li>
+<li><a href="#minus">minus</a></li>
+<li><a href="#modulo">modulo</a></li>
+<li><a href="#plus">plus</a></li>
+<li><a href="#prepend">prepend</a></li>
+<li><a href="#replace">replace</a></li>
+<li><a href="#remove">remove</a></li>
+<li><a href="#times">times</a></li>
+<li><a href="#upcase">upcase</a></li>
+</ul>
+</li>
+<li><strong><a href="#vero-specific">Vero-specific Liquid</a></strong>
+<ul>
+<li><a href="#fallback">fallback</a></li>
+<li><a href="#precision">precision</a></li>
+<li><a href="#current-time">current date/time</a></li>
+<li><a href="#future-date">future date</a></li>
+<li><a href="#timezones">timezones</a></li>
+</ul>
+</li>
+</ul>
+</aside></div></div>  <section id="call-to-action" class="center-text dark-box">
+    <div class="inner">
+      <h1 class="cta-title">Put your data first and craft better product experiences</h1>
+      <p class="sub-heading">Create a free account, import your data and see how Vero can help your team.</p>
+      <a class="btn btn-success btn-large btn-wide" href="http://app.getvero.com/signup">Get started</a>
+    </div>
+  </section>
+  <footer class="site-footer" itemscope itemtype="https://schema.org/WPFooter"><div class="wrap">  <div class="main-footer">
+      <ul class="col">
+    <li id="logo"><a href="index.html"><img src="wp-content/themes/vero/assets/images/home/logo/logo-white.svg" width="104"></a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Product</li>
+    <li><a href="features/index.html">Features</a></li>
+    <li><a href="workflows/index.html">Workflows</a></li>
+    <li><a href="event-manager/index.html">Event Management</a></li>
+    <li><a href="fusion/index.html">Fusion</a></li>
+    <li><a href="multi-language-campaigns/index.html">Multi-language</a></li>
+    <li><a href="reporting/index.html">Reporting</a></li>
+    <li><a href="integrations/vero-segment/index.html">Vero &plus; Segment</a></li>
+    <li><a href="integrations/vero-stitch/index.html">Vero &plus; Stitch</a></li>
+    <li><a href="integrations/vero-snowplow/index.html">Vero &plus; Snowplow</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Resources</li>
+    <!--<li>About</li>-->
+    <li><a href="resources/index.html" target="_blank">Blog</a></li>
+    <li ><a href="email-personalization-liquid-guide.html" target="_blank">Liquid Guide</a></li>
+    <li><a href="https://help.getvero.com/" target="_blank">Help Center</a></li>
+    <li><a href="https://developers.getvero.com/" target="_blank">API Reference</a></li>
+    <li><a href="https://releasenotes.getvero.com/" target="_blank">Release Notes</a></li>
+    <li><a href="https://status.getvero.com/" target="_blank">Status</a></li>
+  </ul>
+  <ul class="col">
+    <li class="header">Company</li>
+    <li><a href="careers/index.html">Careers</a><a href="careers/index.html" class="hiring-pill left-margin-tiny">We're Hiring!</a></li>
+    <li><a href="terms-of-service/index.html">Terms of Service</a></li>
+    <li><a href="privacy/index.html">Privacy Policy</a></li>
+    <li><a href="gdpr/index.html">GDPR</a></li>
+    <li><a href="https://twitter.com/getvero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @getvero</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+  </ul>
+    </div>
+</div></footer></div><script data-cfasync="false">
+  document.onreadystatechange = function () {
+    if (document.readyState == "complete") {
+      var logout_link = document.querySelectorAll('a[href*="wp-login.php?action=logout"]');
+      if (logout_link) {
+        for(var i=0; i < logout_link.length; i++) {
+          logout_link[i].addEventListener( "click", function() {
+            Intercom('shutdown');
+          });
+        }
+      }
+    }
+  };
+</script>
+<script data-cfasync="false">
+  window.intercomSettings = {"app_id":"i8y1wtxu"};
+</script>
+<script data-cfasync="false">(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/i8y1wtxu';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>	<div style="display:none">
+	</div>
+<script type='text/javascript' src='wp-content/plugins/jetpack/_inc/build/photon/photon.minb3d9.js?ver=20130122'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var countVars = {"disqusShortname":"theveroblog"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/disqus-comment-system/public/js/comment_count952b.js?ver=3.0.16'></script>
+<script type='text/javascript' src='https://s0.wp.com/wp-content/js/devicepx-jetpack.js?ver=201850'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var NSS = {"ajaxurl":"https:\/\/www.getvero.com\/wp-admin\/admin-ajax.php","disable_js":"","nonce":"4c170e1f4d"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/naked-social-share/assets/js/naked-social-share.min1159.js?ver=1.4.2'></script>
+<script type='text/javascript' src='https://secure.gravatar.com/js/gprofiles.js?ver=2018Decaa'></script>
+<script type='text/javascript'>
+/* <![CDATA[ */
+var WPGroHo = {"my_hash":""};
+/* ]]> */
+</script>
+<script type='text/javascript' src='wp-content/plugins/jetpack/modules/wpgroho5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/jquery.waypoints.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/scripts.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/dev_message.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/jquery.bxslider.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/featherlight.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/picturefill.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/jquery.parallax-scroll.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/prism.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/jquery.cookie.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/jquery.leanModal.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/smooth-scroll.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/homepage.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/features.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/pricing.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/blog.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/vendor/imgslider.min.js'></script>
+<script type='text/javascript' src='wp-content/themes/vero/assets/scripts/landing-pages.js'></script>
+<script type='text/javascript' src='wp-includes/js/wp-embed.min5010.js?ver=4.9.8'></script>
+<script type='text/javascript' src='https://stats.wp.com/e-201850.js' async='async' defer='defer'></script>
+<script type='text/javascript'>
+	_stq = window._stq || [];
+	_stq.push([ 'view', {v:'ext',j:'1:6.5',blog:'103168960',post:'7711',tz:'11',srv:'www.getvero.com'} ]);
+	_stq.push([ 'clickTrackerInit', '103168960', '7711' ]);
+</script>
+</body></html>
