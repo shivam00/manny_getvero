@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to CodeIgniter &mdash; CodeIgniter 3.1.8 documentation</title>
+  <title>Web Page Caching &mdash; CodeIgniter 3.1.8 documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="CodeIgniter 3.1.8 documentation" href="../index.html"/>
-        <link rel="next" title="Installation Instructions" href="../installation/index.html"/>
-        <link rel="prev" title="CodeIgniter User Guide" href="../index.html"/> 
+        <link rel="up" title="General Topics" href="index.html"/>
+        <link rel="next" title="Profiling Your Application" href="profiling.html"/>
+        <link rel="prev" title="Error Handling" href="errors.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -50,8 +51,8 @@
     
     
       <div id="pulldown-menu" class="ciNav">
-        <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -89,8 +90,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -109,7 +110,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
@@ -234,8 +235,8 @@
         
           
           
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -273,8 +274,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -293,7 +294,7 @@
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="errors.html">Error Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Caching</a></li>
 <li class="toctree-l2"><a class="reference internal" href="profiling.html">Profiling Your Application</a></li>
 <li class="toctree-l2"><a class="reference internal" href="cli.html">Running via the CLI</a></li>
 <li class="toctree-l2"><a class="reference internal" href="managing_apps.html">Managing your Applications</a></li>
@@ -407,7 +408,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Welcome to CodeIgniter</li>
+        <li><a href="index.html">General Topics</a> &raquo;</li>
+      
+    <li>Web Page Caching</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -419,34 +422,74 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="welcome-to-codeigniter">
-<h1>Welcome to CodeIgniter<a class="headerlink" href="#welcome-to-codeigniter" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter is an Application Development Framework - a toolkit - for
-people who build web sites using PHP. Its goal is to enable you to
-develop projects much faster than you could if you were writing code
-from scratch, by providing a rich set of libraries for commonly needed
-tasks, as well as a simple interface and logical structure to access
-these libraries. CodeIgniter lets you creatively focus on your project
-by minimizing the amount of code needed for a given task.</p>
-<div class="section" id="who-is-codeigniter-for">
-<h2>Who is CodeIgniter For?<a class="headerlink" href="#who-is-codeigniter-for" title="Permalink to this headline">¶</a></h2>
-<p>CodeIgniter is right for you if:</p>
-<ul class="simple">
-<li>You want a framework with a small footprint.</li>
-<li>You need exceptional performance.</li>
-<li>You need broad compatibility with standard hosting accounts that run
-a variety of PHP versions and configurations.</li>
-<li>You want a framework that requires nearly zero configuration.</li>
-<li>You want a framework that does not require you to use the command
-line.</li>
-<li>You want a framework that does not require you to adhere to
-restrictive coding rules.</li>
-<li>You are not interested in large-scale monolithic libraries like PEAR.</li>
-<li>You do not want to be forced to learn a templating language (although
-a template parser is optionally available if you desire one).</li>
-<li>You eschew complexity, favoring simple solutions.</li>
-<li>You need clear, thorough documentation.</li>
-</ul>
+  <div class="section" id="web-page-caching">
+<h1>Web Page Caching<a class="headerlink" href="#web-page-caching" title="Permalink to this headline">¶</a></h1>
+<p>CodeIgniter lets you cache your pages in order to achieve maximum
+performance.</p>
+<p>Although CodeIgniter is quite fast, the amount of dynamic information
+you display in your pages will correlate directly to the server
+resources, memory, and processing cycles utilized, which affect your
+page load speeds. By caching your pages, since they are saved in their
+fully rendered state, you can achieve performance that nears that of
+static web pages.</p>
+<div class="section" id="how-does-caching-work">
+<h2>How Does Caching Work?<a class="headerlink" href="#how-does-caching-work" title="Permalink to this headline">¶</a></h2>
+<p>Caching can be enabled on a per-page basis, and you can set the length
+of time that a page should remain cached before being refreshed. When a
+page is loaded for the first time, the cache file will be written to
+your application/cache folder. On subsequent page loads the cache file
+will be retrieved and sent to the requesting user’s browser. If it has
+expired, it will be deleted and refreshed before being sent to the
+browser.</p>
+</div>
+<div class="section" id="enabling-caching">
+<h2>Enabling Caching<a class="headerlink" href="#enabling-caching" title="Permalink to this headline">¶</a></h2>
+<p>To enable caching, put the following tag in any of your controller
+methods:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">output</span><span class="o">-&gt;</span><span class="na">cache</span><span class="p">(</span><span class="nv">$n</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Where <code class="docutils literal"><span class="pre">$n</span></code> is the number of <strong>minutes</strong> you wish the page to remain
+cached between refreshes.</p>
+<p>The above tag can go anywhere within a method. It is not affected by
+the order that it appears, so place it wherever it seems most logical to
+you. Once the tag is in place, your pages will begin being cached.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Because of the way CodeIgniter stores content for output,
+caching will only work if you are generating display for your
+controller with a <a class="reference internal" href="views.html"><span class="doc">view</span></a>.</p>
+</div>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">If you change configuration options that might affect
+your output, you have to manually delete your cache files.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Before the cache files can be written you must set the file
+permissions on your <em>application/cache/</em> directory such that
+it is writable.</p>
+</div>
+</div>
+<div class="section" id="deleting-caches">
+<h2>Deleting Caches<a class="headerlink" href="#deleting-caches" title="Permalink to this headline">¶</a></h2>
+<p>If you no longer wish to cache a file you can remove the caching tag and
+it will no longer be refreshed when it expires.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Removing the tag will not delete the cache immediately. It will
+have to expire normally.</p>
+</div>
+<p>If you need to manually delete the cache, you can use the <code class="docutils literal"><span class="pre">delete_cache()</span></code>
+method:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="c1">// Deletes cache for the currently requested URI</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">output</span><span class="o">-&gt;</span><span class="na">delete_cache</span><span class="p">();</span>
+
+<span class="c1">// Deletes cache for /foo/bar</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">output</span><span class="o">-&gt;</span><span class="na">delete_cache</span><span class="p">(</span><span class="s1">&#39;/foo/bar&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -456,10 +499,10 @@ a template parser is optionally available if you desire one).</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../installation/index.html" class="btn btn-neutral float-right" title="Installation Instructions">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="profiling.html" class="btn btn-neutral float-right" title="Profiling Your Application">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="CodeIgniter User Guide"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="errors.html" class="btn btn-neutral" title="Error Handling"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

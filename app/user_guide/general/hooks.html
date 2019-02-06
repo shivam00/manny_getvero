@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to CodeIgniter &mdash; CodeIgniter 3.1.8 documentation</title>
+  <title>Hooks - Extending the Framework Core &mdash; CodeIgniter 3.1.8 documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="CodeIgniter 3.1.8 documentation" href="../index.html"/>
-        <link rel="next" title="Installation Instructions" href="../installation/index.html"/>
-        <link rel="prev" title="CodeIgniter User Guide" href="../index.html"/> 
+        <link rel="up" title="General Topics" href="index.html"/>
+        <link rel="next" title="Auto-loading Resources" href="autoloader.html"/>
+        <link rel="prev" title="Creating Ancillary Classes" href="ancillary_classes.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -50,8 +51,8 @@
     
     
       <div id="pulldown-menu" class="ciNav">
-        <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -89,8 +90,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -103,7 +104,7 @@
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hooks - Extending the Framework Core</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
@@ -234,8 +235,8 @@
         
           
           
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -273,8 +274,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -287,7 +288,7 @@
 <li class="toctree-l2"><a class="reference internal" href="creating_drivers.html">Creating Drivers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hooks - Extending the Framework Core</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
@@ -407,7 +408,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Welcome to CodeIgniter</li>
+        <li><a href="index.html">General Topics</a> &raquo;</li>
+      
+    <li>Hooks - Extending the Framework Core</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -419,33 +422,127 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="welcome-to-codeigniter">
-<h1>Welcome to CodeIgniter<a class="headerlink" href="#welcome-to-codeigniter" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter is an Application Development Framework - a toolkit - for
-people who build web sites using PHP. Its goal is to enable you to
-develop projects much faster than you could if you were writing code
-from scratch, by providing a rich set of libraries for commonly needed
-tasks, as well as a simple interface and logical structure to access
-these libraries. CodeIgniter lets you creatively focus on your project
-by minimizing the amount of code needed for a given task.</p>
-<div class="section" id="who-is-codeigniter-for">
-<h2>Who is CodeIgniter For?<a class="headerlink" href="#who-is-codeigniter-for" title="Permalink to this headline">¶</a></h2>
-<p>CodeIgniter is right for you if:</p>
+  <div class="section" id="hooks-extending-the-framework-core">
+<h1>Hooks - Extending the Framework Core<a class="headerlink" href="#hooks-extending-the-framework-core" title="Permalink to this headline">¶</a></h1>
+<p>CodeIgniter’s Hooks feature provides a means to tap into and modify the
+inner workings of the framework without hacking the core files. When
+CodeIgniter runs it follows a specific execution process, diagramed in
+the <a class="reference internal" href="../overview/appflow.html"><span class="doc">Application Flow</span></a> page. There may be
+instances, however, where you’d like to cause some action to take place
+at a particular stage in the execution process. For example, you might
+want to run a script right before your controllers get loaded, or right
+after, or you might want to trigger one of your own scripts in some
+other location.</p>
+<div class="section" id="enabling-hooks">
+<h2>Enabling Hooks<a class="headerlink" href="#enabling-hooks" title="Permalink to this headline">¶</a></h2>
+<p>The hooks feature can be globally enabled/disabled by setting the
+following item in the <strong>application/config/config.php</strong> file:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$config</span><span class="p">[</span><span class="s1">&#39;enable_hooks&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">TRUE</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="defining-a-hook">
+<h2>Defining a Hook<a class="headerlink" href="#defining-a-hook" title="Permalink to this headline">¶</a></h2>
+<p>Hooks are defined in the <strong>application/config/hooks.php</strong> file.
+Each hook is specified as an array with this prototype:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$hook</span><span class="p">[</span><span class="s1">&#39;pre_controller&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;MyClass&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;function&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Myfunction&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filename&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Myclass.php&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filepath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hooks&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span>   <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;beer&#39;</span><span class="p">,</span> <span class="s1">&#39;wine&#39;</span><span class="p">,</span> <span class="s1">&#39;snacks&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>Notes:</strong></p>
+<p>The array index correlates to the name of the particular hook point you
+want to use. In the above example the hook point is pre_controller. A
+list of hook points is found below. The following items should be
+defined in your associative hook array:</p>
 <ul class="simple">
-<li>You want a framework with a small footprint.</li>
-<li>You need exceptional performance.</li>
-<li>You need broad compatibility with standard hosting accounts that run
-a variety of PHP versions and configurations.</li>
-<li>You want a framework that requires nearly zero configuration.</li>
-<li>You want a framework that does not require you to use the command
-line.</li>
-<li>You want a framework that does not require you to adhere to
-restrictive coding rules.</li>
-<li>You are not interested in large-scale monolithic libraries like PEAR.</li>
-<li>You do not want to be forced to learn a templating language (although
-a template parser is optionally available if you desire one).</li>
-<li>You eschew complexity, favoring simple solutions.</li>
-<li>You need clear, thorough documentation.</li>
+<li><strong>class</strong> The name of the class you wish to invoke. If you prefer to
+use a procedural function instead of a class, leave this item blank.</li>
+<li><strong>function</strong> The function (or method) name you wish to call.</li>
+<li><strong>filename</strong> The file name containing your class/function.</li>
+<li><strong>filepath</strong> The name of the directory containing your script.
+Note:
+Your script must be located in a directory INSIDE your <em>application/</em>
+directory, so the file path is relative to that directory. For example,
+if your script is located in <em>application/hooks/</em>, you will simply use
+‘hooks’ as your filepath. If your script is located in
+<em>application/hooks/utilities/</em> you will use ‘hooks/utilities’ as your
+filepath. No trailing slash.</li>
+<li><strong>params</strong> Any parameters you wish to pass to your script. This item
+is optional.</li>
+</ul>
+<p>You can also use lambda/anoymous functions (or closures) as hooks, with
+a simpler syntax:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$hook</span><span class="p">[</span><span class="s1">&#39;post_controller&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="k">function</span><span class="p">()</span>
+<span class="p">{</span>
+        <span class="cm">/* do something here */</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-calls-to-the-same-hook">
+<h2>Multiple Calls to the Same Hook<a class="headerlink" href="#multiple-calls-to-the-same-hook" title="Permalink to this headline">¶</a></h2>
+<p>If want to use the same hook point with more than one script, simply
+make your array declaration multi-dimensional, like this:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$hook</span><span class="p">[</span><span class="s1">&#39;pre_controller&#39;</span><span class="p">][]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;MyClass&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;function&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyMethod&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filename&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Myclass.php&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filepath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hooks&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span>   <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;beer&#39;</span><span class="p">,</span> <span class="s1">&#39;wine&#39;</span><span class="p">,</span> <span class="s1">&#39;snacks&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+
+<span class="nv">$hook</span><span class="p">[</span><span class="s1">&#39;pre_controller&#39;</span><span class="p">][]</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;MyOtherClass&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;function&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;MyOtherMethod&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filename&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Myotherclass.php&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;filepath&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;hooks&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;params&#39;</span>   <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;yellow&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Notice the brackets after each array index:</p>
+<div class="highlight-ci"><div class="highlight"><pre><span></span><span class="nv">$hook</span><span class="p">[</span><span class="s1">&#39;pre_controller&#39;</span><span class="p">][]</span>
+</pre></div>
+</div>
+<p>This permits you to have the same hook point with multiple scripts. The
+order you define your array will be the execution order.</p>
+</div>
+<div class="section" id="hook-points">
+<h2>Hook Points<a class="headerlink" href="#hook-points" title="Permalink to this headline">¶</a></h2>
+<p>The following is a list of available hook points.</p>
+<ul class="simple">
+<li><strong>pre_system</strong>
+Called very early during system execution. Only the benchmark and
+hooks class have been loaded at this point. No routing or other
+processes have happened.</li>
+<li><strong>pre_controller</strong>
+Called immediately prior to any of your controllers being called.
+All base classes, routing, and security checks have been done.</li>
+<li><strong>post_controller_constructor</strong>
+Called immediately after your controller is instantiated, but prior
+to any method calls happening.</li>
+<li><strong>post_controller</strong>
+Called immediately after your controller is fully executed.</li>
+<li><strong>display_override</strong>
+Overrides the <code class="docutils literal"><span class="pre">_display()</span></code> method, used to send the finalized page
+to the web browser at the end of system execution. This permits you
+to use your own display methodology. Note that you will need to
+reference the CI superobject with <code class="docutils literal"><span class="pre">$this-&gt;CI</span> <span class="pre">=&amp;</span> <span class="pre">get_instance()</span></code> and
+then the finalized data will be available by calling
+<code class="docutils literal"><span class="pre">$this-&gt;CI-&gt;output-&gt;get_output()</span></code>.</li>
+<li><strong>cache_override</strong>
+Enables you to call your own method instead of the <code class="docutils literal"><span class="pre">_display_cache()</span></code>
+method in the <a class="reference internal" href="../libraries/output.html"><span class="doc">Output Library</span></a>. This permits
+you to use your own cache display mechanism.</li>
+<li><strong>post_system</strong>
+Called after the final rendered page is sent to the browser, at the
+end of system execution after the finalized data is sent to the
+browser.</li>
 </ul>
 </div>
 </div>
@@ -456,10 +553,10 @@ a template parser is optionally available if you desire one).</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../installation/index.html" class="btn btn-neutral float-right" title="Installation Instructions">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="autoloader.html" class="btn btn-neutral float-right" title="Auto-loading Resources">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="CodeIgniter User Guide"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="ancillary_classes.html" class="btn btn-neutral" title="Creating Ancillary Classes"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to CodeIgniter &mdash; CodeIgniter 3.1.8 documentation</title>
+  <title>Auto-loading Resources &mdash; CodeIgniter 3.1.8 documentation</title>
   
 
   
@@ -34,8 +34,9 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="CodeIgniter 3.1.8 documentation" href="../index.html"/>
-        <link rel="next" title="Installation Instructions" href="../installation/index.html"/>
-        <link rel="prev" title="CodeIgniter User Guide" href="../index.html"/> 
+        <link rel="up" title="General Topics" href="index.html"/>
+        <link rel="next" title="Common Functions" href="common_functions.html"/>
+        <link rel="prev" title="Hooks - Extending the Framework Core" href="hooks.html"/> 
 
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js"></script>
@@ -50,8 +51,8 @@
     
     
       <div id="pulldown-menu" class="ciNav">
-        <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+        <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -89,8 +90,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -104,7 +105,7 @@
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
@@ -234,8 +235,8 @@
         
           
           
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Welcome to CodeIgniter</a></li>
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="welcome.html">Welcome to CodeIgniter</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation Instructions</a><ul>
@@ -273,8 +274,8 @@
 </ul>
 </li>
 </ul>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="index.html">General Topics</a><ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General Topics</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="urls.html">CodeIgniter URLs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="controllers.html">Controllers</a></li>
 <li class="toctree-l2"><a class="reference internal" href="reserved_names.html">Reserved Names</a></li>
@@ -288,7 +289,7 @@
 <li class="toctree-l2"><a class="reference internal" href="core_classes.html">Creating Core System Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ancillary_classes.html">Creating Ancillary Classes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks - Extending the Framework Core</a></li>
-<li class="toctree-l2"><a class="reference internal" href="autoloader.html">Auto-loading Resources</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Auto-loading Resources</a></li>
 <li class="toctree-l2"><a class="reference internal" href="common_functions.html">Common Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="compatibility_functions.html">Compatibility Functions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="routing.html">URI Routing</a></li>
@@ -407,7 +408,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-    <li>Welcome to CodeIgniter</li>
+        <li><a href="index.html">General Topics</a> &raquo;</li>
+      
+    <li>Auto-loading Resources</li>
     <li class="wy-breadcrumbs-aside">
       
     </li>
@@ -419,35 +422,31 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="welcome-to-codeigniter">
-<h1>Welcome to CodeIgniter<a class="headerlink" href="#welcome-to-codeigniter" title="Permalink to this headline">¶</a></h1>
-<p>CodeIgniter is an Application Development Framework - a toolkit - for
-people who build web sites using PHP. Its goal is to enable you to
-develop projects much faster than you could if you were writing code
-from scratch, by providing a rich set of libraries for commonly needed
-tasks, as well as a simple interface and logical structure to access
-these libraries. CodeIgniter lets you creatively focus on your project
-by minimizing the amount of code needed for a given task.</p>
-<div class="section" id="who-is-codeigniter-for">
-<h2>Who is CodeIgniter For?<a class="headerlink" href="#who-is-codeigniter-for" title="Permalink to this headline">¶</a></h2>
-<p>CodeIgniter is right for you if:</p>
+  <div class="section" id="auto-loading-resources">
+<h1>Auto-loading Resources<a class="headerlink" href="#auto-loading-resources" title="Permalink to this headline">¶</a></h1>
+<p>CodeIgniter comes with an “Auto-load” feature that permits libraries,
+helpers, and models to be initialized automatically every time the
+system runs. If you need certain resources globally throughout your
+application you should consider auto-loading them for convenience.</p>
+<p>The following items can be loaded automatically:</p>
 <ul class="simple">
-<li>You want a framework with a small footprint.</li>
-<li>You need exceptional performance.</li>
-<li>You need broad compatibility with standard hosting accounts that run
-a variety of PHP versions and configurations.</li>
-<li>You want a framework that requires nearly zero configuration.</li>
-<li>You want a framework that does not require you to use the command
-line.</li>
-<li>You want a framework that does not require you to adhere to
-restrictive coding rules.</li>
-<li>You are not interested in large-scale monolithic libraries like PEAR.</li>
-<li>You do not want to be forced to learn a templating language (although
-a template parser is optionally available if you desire one).</li>
-<li>You eschew complexity, favoring simple solutions.</li>
-<li>You need clear, thorough documentation.</li>
+<li>Classes found in the <em>libraries/</em> directory</li>
+<li>Helper files found in the <em>helpers/</em> directory</li>
+<li>Custom config files found in the <em>config/</em> directory</li>
+<li>Language files found in the <em>system/language/</em> directory</li>
+<li>Models found in the <em>models/</em> folder</li>
 </ul>
+<p>To autoload resources, open the <strong>application/config/autoload.php</strong>
+file and add the item you want loaded to the autoload array. You’ll
+find instructions in that file corresponding to each type of item.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not include the file extension (.php) when adding items to
+the autoload array.</p>
 </div>
+<p>Additionally, if you want CodeIgniter to use a <a class="reference external" href="https://getcomposer.org/">Composer</a>
+auto-loader, just set <code class="docutils literal"><span class="pre">$config['composer_autoload']</span></code> to <code class="docutils literal"><span class="pre">TRUE</span></code> or
+a custom path in <strong>application/config/config.php</strong>.</p>
 </div>
 
 
@@ -456,10 +455,10 @@ a template parser is optionally available if you desire one).</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../installation/index.html" class="btn btn-neutral float-right" title="Installation Instructions">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="common_functions.html" class="btn btn-neutral float-right" title="Common Functions">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../index.html" class="btn btn-neutral" title="CodeIgniter User Guide"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="hooks.html" class="btn btn-neutral" title="Hooks - Extending the Framework Core"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
