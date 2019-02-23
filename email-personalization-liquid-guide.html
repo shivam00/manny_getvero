@@ -6,7 +6,7 @@
 <head >
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A guide to email personalization using Liquid | Vero</title>
+<title>A guide to email personalization using Liquid | Axtrion</title>
 
 <!-- This site is optimized with the Yoast SEO plugin v8.2.1 - https://yoast.com/wordpress/plugins/seo/ -->
 <meta name="description" content="You can use Liquid syntax in your HTML templates to personalize emails. This guide explains how Liquid works in emails and how to use it, including examples."/>
@@ -151,13 +151,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   </header><div class="entry-content" itemprop="text"><!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN" "http://www.w3.org/TR/REC-html40/loose.dtd">
 <html><body><h2 id="why-liquid" class="chunk">What is Liquid?</h2>
 <p>Liquid is an open-source language, created by Shopify, that enables dynamic content to be displayed on websites, emails and push messages (<em>where the service provider supports Liquid</em>). It offers a huge amount of flexibility to customize your messages, and it can often save you from syncing additional data to your email platform &ndash; allowing you to create more engaging and relevant content, faster.</p>
-<p>This guide explains how Liquid works and provides a summary of the most commonly used Liquid tags and filters for email and push messages, with examples of how to use them. You can also find a list of Vero-specific Liquid shortcodes that make personalizing email and push messages that bit easier.</p>
+<p>This guide explains how Liquid works and provides a summary of the most commonly used Liquid tags and filters for email and push messages, with examples of how to use them. You can also find a list of Axtrion-specific Liquid shortcodes that make personalizing email and push messages that bit easier.</p>
 <h2 id="how-does-it-work">How does it work?</h2>
-<p>The static elements of an email are written in HTML (for push messages it&rsquo;s written in JSON), and the dynamic elements are written in Liquid. The Liquid elements act as placeholders: just before the message is sent to the recipient, the Liquid is replaced and interpreted using the data tracked in your email platform, such as <a href="index.html">Vero</a>.</p>
+<p>The static elements of an email are written in HTML (for push messages it&rsquo;s written in JSON), and the dynamic elements are written in Liquid. The Liquid elements act as placeholders: just before the message is sent to the recipient, the Liquid is replaced and interpreted using the data tracked in your email platform, such as <a href="index.html">Axtrion</a>.</p>
 <p><em>When using Liquid, you should always review the output using the preview and test features in your email platform before activating your campaign.</em></p>
 <hr><h2 id="objects" class="chunk">Objects</h2>
 <p>Objects tell Liquid the location of the data that you want to load in the content of your email or push message.</p>
-<p>For example, the two main objects in Vero are:</p>
+<p>For example, the two main objects in Axtrion are:</p>
 <ul><li><code>user.</code> &ndash; indicates the data stored in the customer profile.</li>
 <li><code>event.</code> &ndash; indicates the data is stored against an event the user has triggered.</li>
 </ul><p>Objects are followed by the variable name, and are denoted by <strong>double curly braces</strong>: <code>{{ object.variable }}</code>. For example:</p>
@@ -172,7 +172,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </tr><tr><td>{{ <strong class="primary">event</strong>.subscription_plan }}
 </td>
 <td>annual</td>
-</tr></tbody></table><p>With Vero, you can also create custom objects that <a href="fusion/index.html">pull data from your internal or third-party APIs</a>.</p>
+</tr></tbody></table><p>With Axtrion, you can also create custom objects that <a href="fusion/index.html">pull data from your internal or third-party APIs</a>.</p>
 <hr><h2 id="tags" class="chunk">Tags</h2>
 <p>Tags create the logic and conditions for the content you want to load in your email.  They are denoted by <strong>curly braces and percent signs</strong>: <code>{%</code> and <code>%}</code> . Tags and the markup inside them are not visible to the email recipient.</p>
 <p>Below are a few of the most commonly used tags in email templates.</p>
@@ -458,8 +458,8 @@ You can also include the <strong>round</strong> filter to round the output to th
 {{ user.subscription_plan | <strong class="primary">split:</strong> <strong class="secondary">&rdquo; &ldquo;</strong> | <strong class="primary">first</strong> | <strong class="primary">upcase</strong> }}
 </td>
 <td>GOLD</td>
-</tr></tbody></table><hr><h2 id="vero-specific" class="chunk">Vero-specific Liquid code</h2>
-<p>We&rsquo;ve extended the standard Liquid functionality with a series of custom functions that make it even quicker and easier to personalize your emails. The following custom Liquid objects and filters can be used in <a href="index.html">Vero</a>:</p>
+</tr></tbody></table><hr><h2 id="vero-specific" class="chunk">Axtrion-specific Liquid code</h2>
+<p>We&rsquo;ve extended the standard Liquid functionality with a series of custom functions that make it even quicker and easier to personalize your emails. The following custom Liquid objects and filters can be used in <a href="index.html">Axtrion</a>:</p>
 <h3 id="fallback">fallback</h3>
 <p>Allows you to add a default value, should a value not exist. The default value will be displayed where the value on the left is empty.</p>
 <table class="full-width code"><thead><tr><th>Input</th>
@@ -565,7 +565,7 @@ Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</stro
 </td>
 <td>Saturday 7 Oct, 21:46 </td>
 </tr></tbody></table><p>
-<strong>Important</strong>: Before launching your email campaign, always double check your Liquid code using Vero&rsquo;s preview and test features.</p></body>
+<strong>Important</strong>: Before launching your email campaign, always double check your Liquid code using Axtrion&rsquo;s preview and test features.</p></body>
 <!-- Mirrored from www.getvero.com/email-personalization-liquid-guide by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 11 Dec 2018 15:21:02 GMT -->
 </html>
 </div></article></main><aside class="sidebar sidebar-primary widget-area sidebar-sticky sidebar-gradient" role="complementary" aria-label="Primary Sidebar" itemscope itemtype="https://schema.org/WPSideBar"><ul class="menu menu-sticky">
@@ -600,7 +600,7 @@ Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</stro
 <li><a href="#upcase">upcase</a></li>
 </ul>
 </li>
-<li><strong><a href="#vero-specific">Vero-specific Liquid</a></strong>
+<li><strong><a href="#vero-specific">Axtrion-specific Liquid</a></strong>
 <ul>
 <li><a href="#fallback">fallback</a></li>
 <li><a href="#precision">precision</a></li>
@@ -613,7 +613,7 @@ Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</stro
 </aside></div></div>  <section id="call-to-action" class="center-text dark-box">
     <div class="inner">
       <h1 class="cta-title">Put your data first and craft better product experiences</h1>
-      <p class="sub-heading">Create a free account, import your data and see how Vero can help your team.</p>
+      <p class="sub-heading">Create a free account, import your data and see how Axtrion can help your team.</p>
       <a class="btn btn-success btn-large btn-wide" href="http://app.getvero.com/signup">Get started</a>
     </div>
   </section>
@@ -629,9 +629,9 @@ Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</stro
     <li><a href="fusion/index.html">Fusion</a></li>
     <li><a href="multi-language-campaigns/index.html">Multi-language</a></li>
     <li><a href="reporting/index.html">Reporting</a></li>
-    <li><a href="integrations/vero-segment/index.html">Vero &plus; Segment</a></li>
-    <li><a href="integrations/vero-stitch/index.html">Vero &plus; Stitch</a></li>
-    <li><a href="integrations/vero-snowplow/index.html">Vero &plus; Snowplow</a></li>
+    <li><a href="integrations/vero-segment/index.html">Axtrion &plus; Segment</a></li>
+    <li><a href="integrations/vero-stitch/index.html">Axtrion &plus; Stitch</a></li>
+    <li><a href="integrations/vero-snowplow/index.html">Axtrion &plus; Snowplow</a></li>
     <li><a href="pricing.html">Pricing</a></li>
   </ul>
   <ul class="col">
@@ -650,7 +650,7 @@ Total: ${{ event.item_price | minus: 8 | <strong class="primary">precision</stro
     <li><a href="terms-of-service/index.html">Terms of Service</a></li>
     <li><a href="privacy/index.html">Privacy Policy</a></li>
     <li><a href="gdpr/index.html">GDPR</a></li>
-    <li><a href="https://twitter.com/getvero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @getvero</a>
+    <li><a href="https://twitter.com/getvero" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @getAxtrion</a>
     <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
   </ul>
     </div>
